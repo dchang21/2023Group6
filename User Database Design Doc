@@ -1,4 +1,5 @@
 User Database Design Document
+Last Updated: 10/13/2023
 
 NOTE:
 Updated version of a mock user database design from product proposal.
@@ -10,7 +11,7 @@ Field id - unique id assigned to every user account. Type int
 Field username -  username of the user. Type String
 Field first_name - first name of the user. Type String
 Field last_name - last name of the user. Type String
-Field location - general coordinate of the user. Type [double,double]  
+Field location - general coordinate of the user. Use google location feature to obtain the values. Type [double,double]  
 Field eating_preferences - eating preferences of the user. Type Object
   Field vegan - is the user vegan. Type Boolean
   Field keto - do the user prefer keto. Type Boolean
