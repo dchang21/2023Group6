@@ -1,6 +1,7 @@
 # Ignore extra files or folders:
 __pycache__
 .venv
+venv
 
 # Ignore secret developer files:
 .env
