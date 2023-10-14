@@ -1,4 +1,9 @@
-# VIA https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/
+"""
+VIA https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/
+$ flask --app eureka run
+http://127.0.0.1:5000/hello
+"/hello" comes from our route. @app.route('/hello')
+"""
 import os
 from flask import Flask
 
@@ -19,8 +24,8 @@ def create_app(test_config=None):# can change nape of "app"
     except OSError:
         pass
 
-    @app.route('/hello')
+    @app.route('/hello') 
     def hello():
-        return 'Hello, World!'
+        return 'Eureka!'
     
     return app
