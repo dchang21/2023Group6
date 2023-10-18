@@ -5,6 +5,7 @@
 
 import os
 from flask import Flask
+from pymongo import MongoClient
 
 # Running Steps:
 # VIA https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/
@@ -14,7 +15,10 @@ from flask import Flask
 
 def create_app(test_config=None):# can change nape of "app"
     app = Flask(__name__, instance_relative_config=True)
-    
+    client = MongoClient('localhost', 27017)
+    user_db = client.flask_db
+    todosTEST = user_db.todosTEST
+
     # NOTE: The quickstart tutorial implies that this config code to link the database is more for SQLite3 rather than MongoDB. We must replace this with PyMongo.
     app.config.from_mapping(
         SECRET_KEY='dev', #Development key only.
