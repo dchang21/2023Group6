@@ -18,13 +18,12 @@ def create_app(test_config=None):# can change nape of "app"
     client = MongoClient('localhost', 27017)
     user_db = client.flask_db
     todosTEST = user_db.todosTEST
-
     # NOTE: The quickstart tutorial implies that this config code to link the database is more for SQLite3 rather than MongoDB. We must replace this with PyMongo.
     app.config.from_mapping(
         SECRET_KEY='dev', #Development key only.
         DATABASE=os.path.join(app.instance_path, 'eurekaeats.mongodb')
         )
-    
+
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)
     else:
