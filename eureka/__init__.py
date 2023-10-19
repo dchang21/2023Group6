@@ -34,7 +34,7 @@ def create_app(test_config=None):# can change nape of "app"
     except OSError:
         pass
 
-    @app.route('/home', methods=('GET', 'POST')) 
+    @app.route('/index', methods=('GET', 'POST')) 
     def index():
         return render_template('index.html', test_message="Hello World!")
     return app
