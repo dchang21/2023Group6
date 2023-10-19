@@ -4,7 +4,7 @@
 """
 
 import os
-from flask import Flask
+from flask import Flask, render_template, request, url_for, redirect
 from pymongo import MongoClient
 
 # Running Steps:
@@ -34,8 +34,7 @@ def create_app(test_config=None):# can change nape of "app"
     except OSError:
         pass
 
-    @app.route('/home') 
-    def home():
-        return 'Eureka!'
-    
+    @app.route('/home', methods=('GET', 'POST')) 
+    def index():
+        return render_template('index.html')
     return app
