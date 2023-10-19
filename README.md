@@ -19,7 +19,7 @@ Please check the _Projects_ tab for an overview of development. If a new work it
 #### 2.2.1 Running Steps:
  1. See https://flask.palletsprojects.com/en/3.0.x/tutorial/fact for a quick overview.
  2. $ flask --app eureka run
- 3. Go to `http://127.0.0.1:5000/home` to see the demo page.
+ 3. Go to `http://127.0.0.1:5000/index` to see the demo page.
     ```python
         # This code sets a path that the app knows. The path comes after the IP and port in the URL.
         @app.route('/home')

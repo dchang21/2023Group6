@@ -7,12 +7,6 @@ import os
 from flask import Flask, render_template, request, url_for, redirect
 from pymongo import MongoClient
 
-# Running Steps:
-# VIA https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/
-# $ flask --app eureka run
-# http://127.0.0.1:5000/hello
-# "/hello" comes from our route. @app.route('/hello')
-
 def create_app(test_config=None):# can change nape of "app"
     app = Flask(__name__, instance_relative_config=True)
     client = MongoClient('localhost', 27017)
