@@ -30,5 +30,12 @@ def create_app(test_config=None):# can change nape of "app"
 
     @app.route('/index', methods=('GET', 'POST')) 
     def index():
-        return render_template('index.html', test_message="Hello World!")
+        if request.method=='POST':
+            username = request.form['username']
+            newuser = request.form['newuser']
+            todosTEST.insert_one({'username': username, 'newuser': newuser})
+            return redirect(url_for('index'))
+        
+        all_todos = todosTEST.find()
+        return render_template('index.html', test_message="Hello World!", todosTEST=all_todos)
     return app
