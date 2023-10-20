@@ -1,0 +1,180 @@
+header {
+    background-color: #98DCE8;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    height: 80px; /* Set the height to a fixed value */
+    display: flex;
+    justify-content: space-between; /* Align logo to the left and other content to the right */
+    align-items: center; /* Vertically center the content within the header */
+  }
+  
+  h2 {
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Avenir';
+    color: #135E8A; 
+    
+
+  }
+  
+  main {
+    margin: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Avenir';
+    font-weight: 500;
+
+    
+  }
+  
+  h1 {
+    font-size: 28px;
+    text-align: center;
+    font-family: 'Avenir';
+    color: #E76062;
+  }
+  .logo img {
+    width: 30vw;
+    height: auto;
+    margin-left: -100px;
+ 
+  }
+  .search img {
+    width: 10px;
+    height: 10px;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-right: 30vw;
+    
+  }
+  
+  input {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px 0px 0px 10px; 
+    width: 800px;
+    font-size: 14px; 
+    
+  }
+  
+  button {
+    background-color: #135E8A; 
+    color: white;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    padding: 20px 12px;
+    cursor: pointer;
+    font-size: 17px; 
+    font-family: 'Avenir';
+    font-weight: bolder;
+
+    
+
+  }
+
+  .search-icon {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+  }
+  
+  .search-button {
+    background-color: #135E8A; 
+    color: white;
+    border: none;
+    border-radius: 0px 10px 10px 0px;   
+    padding: 17px 20px;
+    cursor: pointer;
+  }
+
+  .header-buttons {
+    display: flex;
+    gap: 20px; 
+
+  }
+  
+  .login-button {
+    background-color:#F9BB96;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin-left: 100px;
+
+  }
+  
+  .signup-button {
+    background-color: #E76062;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 30px;
+    cursor: pointer;
+    
+  }
+  .blue-rectangle {
+    background-color: #E5F7FB;
+    height: 230px; 
+    width: 78.2vw;
+    border-radius: 0px 0px 25px 25px; 
+    margin-left: 150px;
+    padding: 10px;
+
+    display: flex;
+    align-items: center; 
+
+  }
+  .blue-rectangle1 {
+    background-color: #E5F7FB; 
+    height: 230px; 
+    width: 78.2vw;
+    border-radius: 0px 0px 25px 25px; 
+    margin-left: 150px;
+    padding: 10px;
+    display: flex;
+    align-items: center; 
+    
+    
+  }
+
+  .restaurants {
+    display: flex;
+    flex-direction: column; 
+    gap: 50px;  
+    margin-top: 11px;
+  }
+  .restaurant {
+    margin-bottom: 20px; 
+    
+  }
+  
+  .header {
+    background-color: #135E8A; 
+    color: white; 
+    font-size: 20px; 
+    padding: 15px;
+    border-radius: 25px 25px 0 0; 
+    width: 77.5vw;
+    margin-left: 150px;
+    font-weight: 500;
+    font-family: 'Avenir';
+
+}
+
+
+
+.blue-rectangle img {
+    max-width: 15%; /* Adjust the image width as needed */
+    margin-right: 20px; /* Add spacing between the image and text */
+  }
+  .blue-rectangle1 img {
+    max-width: 15%; /* Adjust the image width as needed */
+    margin-right: 20px; /* Add spacing between the image and text */
+  }
