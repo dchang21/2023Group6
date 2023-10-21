@@ -15,8 +15,5 @@ def send_dummy_message():
     """
         This is a function to return a simple JSON response to the React client to test if the frontend is properly connected.
     """
-    dummy_response = make_response(dumps({"msg": 'Hello World!'}), 200)
 
-    dummy_response.headers['Content-Type'] = 'application/json'
-
-    return dummy_response
+    return {"msg": 'Hello World!'}
