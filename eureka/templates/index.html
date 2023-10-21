@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eureka - Homepage</title>
+</head>
+<body>
+    <p>{{ test_message }}</p>
+    <p>{{ test_user }}</p>
+    <div class="content">
+        <form method="post">
+            <p>
+                <b><label for="content">USER LOGIN</label></b>
+            </p>
+            <p>
+                <input type="text" name="username"
+                    placeholder="User-Name"></input>
+            </p>
+            <p>
+                <b><label for="newuser">New User?</label></b>
+            </p>
+            <p>
+                <input id="newuser-0" name="newuser" type="radio" value="Returning">
+                <label for="newuser-0">Returning</label>
+            </p>
+            <p>
+                <input id="newuser-1" name="newuser" type="radio" value="New">
+                <label for="newuser-1">New</label>
+            </p>
+            <button type="submit">Submit</button>
+        </form>
+        </div>
+</body>
+</html>
