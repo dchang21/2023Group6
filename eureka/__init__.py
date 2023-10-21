@@ -4,11 +4,17 @@
 """
 
 import os
+
 from flask import Flask, render_template, request, url_for, redirect
 from pymongo import MongoClient
 
+from restaurants import restaurant_router
+
 def create_app(test_config=None):# can change nape of "app"
+    # 1a. Create application.
     app = Flask(__name__, instance_relative_config=True)
+    
+    # 1b. Configure application.
     client = MongoClient('localhost', 27017)
     user_db = client.flask_db
     userCOLL = user_db.userCOLL #User Collection
@@ -27,6 +33,9 @@ def create_app(test_config=None):# can change nape of "app"
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    # 2. Put request handlers or blueprints.
+    app.register_blueprint(restaurant_router)
 
     @app.route('/index', methods=('GET', 'POST')) 
     def index():
