@@ -6,6 +6,37 @@ import italian1 from '../assets/italian1.jpeg';
 import italian2 from '../assets/italian2.jpeg';
 
 function LandingPage() {
+  /**
+   * @description Sends a simple GET request to the Flask backend to test if this React client is connected. Takes a simple JSON message.
+   * @note Check `eureka/restaurants.py` for API details.
+   * @throws {Error} If the API call failed.
+   * @returns {Promise<object | null>} Async task result for API.
+   */
+  async function dummyPingAPI() {
+    const res = await fetch('http://localhost:5000/api/dummy', {
+      'mode': 'no-cors',
+      'method': 'GET',
+      'headers': {
+        'Accept': 'application/json'
+      }
+    }).catch((err) => console.error(`eurekaeats: ${err}`)) || null; // Default to null in case of a void value.
+
+    if (res) {
+      return res.json();
+    }
+
+    return null;
+  }
+
+  /**
+   * @description Quick and dirty test function to log the message. Should say "Hello World!" in the console when the search button clicks.
+   */
+  async function testDummyAPICall() {
+    const message = await dummyPingAPI();
+
+    console.log(`eurekaeats/api/dummy: ${message.msg}`);
+  }
+  
   return (
     <div>
       <header>
@@ -14,13 +45,12 @@ function LandingPage() {
         </div>
         <div className="search-bar">
           <input type="text" placeholder="Begin your search for a restaurant here..." />
-          <button className="search-button">
+          <button className="search-button" onClick={testDummyAPICall}>
             <img src={search} alt="searchLogo" className="search-icon" />
           </button>
           <div className="header-buttons">
             <button className="login-button">Login</button>
             <button className="signup-button" style={{ whiteSpace: 'nowrap' }}>Sign Up</button>
-
           </div>
         </div>
       </header>
