@@ -18,10 +18,12 @@ function LandingPage() {
      */
     const res = await fetch('http://127.0.0.1:5000/api/dummy', {
       'mode': 'cors',
-      'method': 'GET',
+      'method': 'POST',
       'headers': {
-        'Accept': 'application/json'
-      }
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': '{"action": 47, "args": null}'
     }).catch((err) => console.error(`eurekaeats: ${err}`)) || null; // Default to null in case of a void value.
 
     if (res) {
@@ -37,7 +39,7 @@ function LandingPage() {
   async function testDummyAPICall() {
     const message = await dummyPingAPI();
 
-    console.log(`eurekaeats/api/dummy: ${message.msg}`);
+    console.log(`eurekaeats/api/dummy: ${message.payload} ${message.data}`);
   }
   
   return (
