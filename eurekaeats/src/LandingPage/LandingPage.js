@@ -13,8 +13,11 @@ function LandingPage() {
    * @returns {Promise<object | null>} Async task result for API.
    */
   async function dummyPingAPI() {
-    const res = await fetch('http://localhost:5000/api/dummy', {
-      'mode': 'no-cors',
+    /**
+     * Devs: Please keep "cors" mode on for security purposes so that no other web programs out of localhost testing will hack us. If you add a header to 'headers', please please add it to the "restaurants" module so the server and client agree to process API messages. Same goes for HTTP methods like POST. This was a pain in the ass to get working!
+     */
+    const res = await fetch('http://127.0.0.1:5000/api/dummy', {
+      'mode': 'cors',
       'method': 'GET',
       'headers': {
         'Accept': 'application/json'

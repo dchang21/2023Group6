@@ -15,5 +15,11 @@ def send_dummy_message():
     """
         This is a function to return a simple JSON response to the React client to test if the frontend is properly connected.
     """
+    reply = make_response({"msg": 'Hello World!'}, 200)
 
-    return {"msg": 'Hello World!'}
+    reply.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000') # NOTE: Permits the frontend app at this spot to request the API for development only. Should fix CORS errors?
+    reply.headers.add('Access-Control-Allow-Methods', 'GET') # NOTE: Allows GET requests from React AJAX for now.
+    reply.headers.add('Access-Control-Allow-Headers', 'Accept, Authorization') # NOTE: Allows these headers from React frontend to satisfy CORS checks.
+    reply.content_type = 'application/json' # Tell the client we're sending JSON.
+
+    return reply
