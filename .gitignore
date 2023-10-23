@@ -2,6 +2,7 @@
 
 # Ignore extra files or folders:
 .DS_Store
+.vscode
 __pycache__
 .venv
 venv

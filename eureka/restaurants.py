@@ -19,21 +19,12 @@ def send_dummy_message():
     json_reply = None
     api_call_method = request.method
     
-    # GET requests for EurekaEats API are for sending data TO the server.
-    if api_call_method == 'GET':
+    if api_call_method == 'GET' or api_call_method == 'POST':
         json_reply = make_response({'payload': 1, 'data': 'Hello world!'}, 200)
         json_reply.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000') # NOTE: Permits the frontend app at this spot to request the API for development only. Should fix CORS errors?
-        json_reply.headers.add('Access-Control-Allow-Methods', 'GET') # NOTE: Allows GET requests from React AJAX for now.
+        json_reply.headers.add('Access-Control-Allow-Methods', 'GET, POST') # NOTE: Allows GET requests from React AJAX for now.
         json_reply.headers.add('Access-Control-Allow-Headers', 'Accept, Content-Type') # NOTE: Allows these headers from React frontend to satisfy CORS checks.
         json_reply.content_type = 'application/json' # Tell the client we're sending JSON.
-
-    elif api_call_method == 'POST':
-        json_reply = make_response({'payload': 1, 'data': 'Hello World 2!'}, 200)
-
-        json_reply.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
-        json_reply.headers.add('Access-Control-Allow-Methods', 'POST')
-        json_reply.headers.add('Access-Control-Allow-Headers', 'Accept, Content-Type')
-        json_reply.content_type = 'application/json'
     else:
         json_reply = make_response('Looks good!', 200)
         json_reply.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
