@@ -8,7 +8,7 @@ import os
 from flask import Flask, render_template, request, url_for, redirect
 from pymongo import MongoClient
 
-from api.restaurants import restaurant_router
+from api.restaurants import restaurant_api_router
 
 def create_app(test_config=None):# can change nape of "app"
     # 1a. Create application.
@@ -35,7 +35,7 @@ def create_app(test_config=None):# can change nape of "app"
         pass
 
     # 2. Put request handlers or blueprints.
-    app.register_blueprint(restaurant_router)
+    app.register_blueprint(restaurant_api_router)
 
     @app.route('/index', methods=('GET', 'POST')) 
     def index():
