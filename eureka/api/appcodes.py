@@ -1,6 +1,7 @@
 """
-    appcodes.py
-    Contains constants for in-application API calls. Specifically, there are named constants for action codes and payload types based on SRD Section 3.4.
+    appcodes.py\n
+    Contains constants for in-application API calls. Specifically, there are named constants for action codes and payload types based on SRD Section 3.4.\n
+    TODO: Add error codes later to documents and this file.
 """
 
 ## ACTION CODES ##
