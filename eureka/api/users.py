@@ -1,6 +1,10 @@
 """
     @file users.py\n
     Contains API call handlers for user actions. Does not include admin action handlers, as they are instead in `admin.py`.\n
+    Test command:\n
+    ```bash
+    curl -X POST -v "http://127.0.0.1:5000/api/users/action" -H "Accept: application/json" -H "Content-Type: application/json" -H "Connection: close" --data "{\"action\": 32, \"args\": null}"
+    ```\n
     @author Derek Tan
 """
 
@@ -37,7 +41,7 @@ def handle_user_action():
 
     # 2. Handle request by method.
     if api_call_method == 'GET' or api_call_method == 'POST':
-        json_reply = make_response(user_api_do(json_request.action, None), 200)
+        json_reply = make_response(user_api_do(json_request['action'], None), 200)
         json_reply.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
         json_reply.headers.add('Access-Control-Allow-Methods', 'GET, POST')
         json_reply.headers.add('Access-Control-Allow-Headers', 'Accept, Content-Type')
