@@ -5,13 +5,14 @@
     @author Derek Tan
 """
 
-from json import loads
-
+# from json import loads
 from flask import Blueprint, make_response, request
 
-restaurant_router = Blueprint('restaurant_api', __name__)
+from eureka.api.appcodes import EE_PAYLOAD_NUMBER, EE_PAYLOAD_STRING, EE_PAYLOAD_OBJECT, EE_PAYLOAD_BOOLEAN
 
-@restaurant_router.route('/api/dummy', methods=['OPTIONS', 'GET', 'POST'])
+restaurant_api_router = Blueprint('restaurant_api', __name__)
+
+@restaurant_api_router.route('/api/dummy', methods=['OPTIONS', 'GET', 'POST'])
 def send_dummy_message():
     """
         This is a function to return a simple JSON response to the React client to test if the frontend is properly connected. GET requests are to get JSON back from the server. POST requests are to send JSON to the server to process.
@@ -20,7 +21,7 @@ def send_dummy_message():
     api_call_method = request.method
     
     if api_call_method == 'GET' or api_call_method == 'POST':
-        json_reply = make_response({'payload': 1, 'data': 'Hello world!'}, 200)
+        json_reply = make_response({'payload': EE_PAYLOAD_STRING, 'data': 'Hello world!'}, 200)
         json_reply.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000') # NOTE: Permits the frontend app at this spot to request the API for development only. Should fix CORS errors?
         json_reply.headers.add('Access-Control-Allow-Methods', 'GET, POST') # NOTE: Allows GET requests from React AJAX for now.
         json_reply.headers.add('Access-Control-Allow-Headers', 'Accept, Content-Type') # NOTE: Allows these headers from React frontend to satisfy CORS checks.
