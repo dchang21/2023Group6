@@ -7,8 +7,8 @@
 # from json import loads
 from flask import Blueprint, make_response, request
 
-from appcodes import EE_TEST_DUMMY_CALL, EE_GET_USER_INFO, EE_PAYLOAD_NUMBER, EE_PAYLOAD_STRING, EE_PAYLOAD_OBJECT, EE_PAYLOAD_BOOLEAN
-from mockdata.fakeusers import MOCK_USER_1
+from eureka.api.appcodes import EE_TEST_DUMMY_CALL, EE_GET_USER_INFO, EE_PAYLOAD_NUMBER, EE_PAYLOAD_STRING, EE_PAYLOAD_OBJECT, EE_PAYLOAD_BOOLEAN
+from eureka.mockdata.fakeusers import MOCK_USER_1
 
 ## HELPER FUNCTIONS ##
 def user_api_do(appcode: int=EE_TEST_DUMMY_CALL, args=None):

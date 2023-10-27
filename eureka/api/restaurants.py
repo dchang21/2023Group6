@@ -8,7 +8,7 @@
 # from json import loads
 from flask import Blueprint, make_response, request
 
-from appcodes import EE_PAYLOAD_NUMBER, EE_PAYLOAD_STRING, EE_PAYLOAD_OBJECT, EE_PAYLOAD_BOOLEAN
+from eureka.api.appcodes import EE_PAYLOAD_NUMBER, EE_PAYLOAD_STRING, EE_PAYLOAD_OBJECT, EE_PAYLOAD_BOOLEAN
 
 restaurant_api_router = Blueprint('restaurant_api', __name__)
 
