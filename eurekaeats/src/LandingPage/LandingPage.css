@@ -18,6 +18,7 @@ header {
   grid-template-rows: 100px;
   /* Align logo to the left and other content to the right */
   align-items: center;
+  margin-top: 100;
   /* Vertically center the content within the header */
 }
 
