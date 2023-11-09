@@ -1,0 +1,159 @@
+/*
+  Contents of CSS:
+  Header
+  Controls
+  Basic Text
+  Review Tiles
+*/
+
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .logo img {
+    width: 30vw;
+    margin-left: -100px;
+  }
+  
+  input {
+    display: block;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px 0px 0px 10px;
+    width: auto;
+    font-size: 14px;
+  }
+  
+  button {
+    background-color: #135E8A;
+    color: white;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    padding: 20px 12px;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: 'Avenir';
+    font-weight: bolder;
+  }
+  
+  .search-icon {
+    width: 20px;
+    /* Adjust the width as needed */
+    height: 20px;
+    /* Adjust the height as needed */
+  }
+  
+  .search-button {
+    background-color: #135E8A;
+    color: white;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    padding: 17px 20px;
+    cursor: pointer;
+  }
+  
+  .header-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .login-button {
+    background-color: #F9BB96;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin-left: 100px;
+  }
+  
+  .signup-button {
+    background-color: #E76062;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 30px;
+    cursor: pointer;
+  }
+  
+  /* Basic Text */
+  
+  h1 {
+    font-size: 28px;
+    text-align: center;
+    font-family: 'Avenir';
+    color: #E76062;
+  }
+  
+  h2 {
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Avenir';
+    color: #135E8A;
+  }
+  
+  p {
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Avenir';
+    font-weight: 500;
+  }
+  
+  /* Review Tiles */
+  
+  .blue-rectangle {
+    background-color: #E5F7FB;
+    height: 230px;
+    width: 78.2vw;
+    border-radius: 0px 0px 25px 25px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .blue-rectangle1 {
+    background-color: #E5F7FB;
+    height: 230px;
+    width: 78.2vw;
+    border-radius: 0px 0px 25px 25px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .restaurants {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 11px;
+  }
+  
+  .restaurant {
+    margin-bottom: 20px;
+  }
+  
+  .tile-header {
+    background-color: #135E8A;
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 25px 25px 0 0;
+    width: 77.5vw;
+    font-weight: 500;
+    font-family: 'Avenir';
+  
+  }
+  
+  .blue-rectangle img {
+    max-width: 15%;
+    /* Adjust the image width as needed */
+    margin-right: 20px;
+    /* Add spacing between the image and text */
+  }
+  

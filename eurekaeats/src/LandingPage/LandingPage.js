@@ -4,6 +4,7 @@ import logo from '../assets/EurekaEatsWText.png';
 import search from '../assets/searchIcon.png';
 import italian1 from '../assets/italian1.jpeg';
 import italian2 from '../assets/italian2.jpeg';
+import { Link } from 'react-router-dom';
 
 function LandingPage() {
   /**
@@ -47,7 +48,7 @@ function LandingPage() {
 
   return (
     <div>
-      <header>
+  <header>
         <div className="logo">
           <img src={logo} alt="My Logo" />
         </div>
@@ -58,10 +59,12 @@ function LandingPage() {
           </button>
         </div>
         <div className="header-buttons">
-          <button className="login-button">Login</button>
-          <button className="signup-button" style={{ whiteSpace: 'nowrap' }}>Sign Up</button>
+        <Link to="/login" className="login-button">Log In</Link>
+        <Link to="/signin" className="signup-button">Sign In</Link>
+          
         </div>
-      </header>
+    </header>
+  
       <main>
         <h2>
           Welcome to EurekaEats! We know people just want to eat <em>good</em>.
@@ -96,6 +99,8 @@ function LandingPage() {
       </main>
     </div>
   );
+
+  
 }
 
 export default LandingPage;
