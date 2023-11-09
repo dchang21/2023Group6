@@ -9,6 +9,8 @@
 MOCK_USER_1 = {
     'id': 123456789,
     'username': 'DoeEats',
+    'email': 'jdoe22@example.com',
+    'password': 'DEMO123',
     'first_name': 'Jane',
     'last_name': 'Doe',
     'location': [51.5085, -0.1257],  # London, UK
