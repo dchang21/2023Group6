@@ -38,6 +38,9 @@ def user_api_delete_user(args: dict = None, db_client = None):
     return (EE_PAYLOAD_BOOLEAN, False)
 
 def user_api_login_user(args: dict = None, db_client = None):
+    if args is None:
+        return (EE_PAYLOAD_BOOLEAN, False)
+
     username_arg = args['username']
     email_arg = args['email']
     password_arg = args['password']
