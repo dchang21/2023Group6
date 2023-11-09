@@ -30,5 +30,9 @@ Please check the _Projects_ tab for an overview of development. If a new work it
  5. Enter `npm start` to run the React development server. The page should open up automatically.
  6. SIGINT with `CTRL+C` to stop the testrun.
 
-#### 2.2.2 Misc. Tips:
+#### 2.2.2 Testing Tips:
+ - Command: `python -m pytest .` runs _all_ unit tests.
+    - Unit tests are _very_ incomplete for now, as they only test some dummy user API functions.
+
+#### 2.2.3 Misc. Tips:
  - The `config.py` file has been added to the repo for easy access, but it is still unsafe to put custom secret strings in the settings. Please use a `.env` file on your computer instead for database login info.

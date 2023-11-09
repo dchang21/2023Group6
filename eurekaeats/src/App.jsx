@@ -1,14 +1,18 @@
 
-import './App.css';
-import LandingPage from '../src/LandingPage/LandingPage';
+import React from 'react';
+import Navigator from '../src/Navigator/Navigator';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LandingPage from './LandingPage/LandingPage';
 
-
-const app = () => {
+function App() {
   return (
-    <> 
+    <BrowserRouter>
+    <div className="App">
       <LandingPage />
-    </>
-  )
+    </div>
+    </BrowserRouter>
+  );
 }
 
-export default app 
+
+export default App;
