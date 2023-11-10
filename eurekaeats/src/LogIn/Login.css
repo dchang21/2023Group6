@@ -1,61 +1,65 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #E5F7FB; /* Set the entire background to #E5F7FB */
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  main {
-    text-align: center;
-    padding: 20px;
-    background-color: transparent; /* Remove the background color */
-    border-radius: 5px;
-  }
-  h2 {
-    margin: 0;
-    padding: 10px 0; /* Reduced padding between the h2 and logo */
-  }
-  
-  .logo img {
-    max-width: 100%;
-    height: auto;
-    margin: 10px 0; /* Adjusted margin to control spacing */
-  }
-  
-  p {
-    margin: 10px 0;
-  }
-  
-  .email-bar,
-  .password-bar {
-    margin: 10px 0;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* Set the input fields to white */
-  }
-  
-  
-  button.login-button {
-    width: 100%;
-    background-color: #135E8A;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button.login-button:hover {
-    background-color: #2a80b9; /* Slightly darker color on hover */
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #E5F7FB;
+  /* Set the entire background to #E5F7FB */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  text-align: center;
+  padding: 20px;
+  background-color: transparent;
+  /* Remove the background color */
+  border-radius: 5px;
+}
+
+h2 {
+  margin: 0;
+  padding: 10px 0;
+  /* Reduced padding between the h2 and logo */
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+  /* Adjusted margin to control spacing */
+}
+
+p {
+  margin: 10px 0;
+}
+
+.username-bar, .email-bar, .password-bar {
+  margin: 10px 0;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  /* Set the input fields to white */
+}
+
+input[type="submit"].login-button {
+  width: 100%;
+  background-color: #135E8A;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"].login-button:hover {
+  background-color: #2a80b9;
+  /* Slightly darker color on hover */
+}
