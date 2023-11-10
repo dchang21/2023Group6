@@ -12,7 +12,7 @@
 # from json import loads
 from flask import Blueprint, make_response, request
 
-from eureka.api.appcodes import EE_TEST_DUMMY_CALL, EE_CREATE_USER, EE_DELETE_USER, EE_LOGIN_USER, EE_GET_USER_INFO, EE_PAYLOAD_OBJECT, EE_PAYLOAD_BOOLEAN
+from eureka.api.appcodes import EE_TEST_DUMMY_CALL, EE_CREATE_USER, EE_DELETE_USER, EE_LOGIN_USER, EE_GET_USER_INFO, EE_PAYLOAD_OBJECT, EE_PAYLOAD_BOOLEAN, EE_PAYLOAD_NULL
 from eureka.mockdata.fakeusers import MOCK_USER_1
 
 ## HELPER FUNCTIONS ##
@@ -39,7 +39,7 @@ def user_api_delete_user(args: dict = None, db_client = None):
 
 def user_api_login_user(args: dict = None, db_client = None):
     if args is None:
-        return (EE_PAYLOAD_BOOLEAN, False)
+        return (EE_PAYLOAD_NULL, None)
 
     username_arg = args['username']
     email_arg = args['email']
@@ -49,9 +49,9 @@ def user_api_login_user(args: dict = None, db_client = None):
 
     # Do dummy check for a fake user for now!
     if username_arg == MOCK_USER_1['username'] and email_arg == MOCK_USER_1['email'] and password_arg == MOCK_USER_1['password']:
-        return (EE_PAYLOAD_BOOLEAN, True)
+        return (EE_PAYLOAD_OBJECT, {'token': 'demo1'})
 
-    return (EE_PAYLOAD_BOOLEAN, False)
+    return (EE_PAYLOAD_NULL, None)
 
 def user_api_do(appcode: int = EE_TEST_DUMMY_CALL, args = None):
     """
