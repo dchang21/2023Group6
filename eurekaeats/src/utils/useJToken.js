@@ -6,14 +6,14 @@ import { useState } from "react";
 function useJToken() {
     /**
      * @description Helper function to retrieve the stored JSON token.
-     * @returns {string | null}
+     * @returns {string}
      */
     const getJSONToken = () => {
         const rawJTokenData = sessionStorage.getItem('E_EATS_TOKEN');
         const userJToken = JSON.parse(rawJTokenData);
 
         // Default undefined tokens to a null token!
-        return userJToken || null;
+        return userJToken || 'guest';
     };
 
     // Pack a state object of user token data for other components.
