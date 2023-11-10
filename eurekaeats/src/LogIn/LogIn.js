@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
-import Outlet from 'react-router-dom';
+import {Navigate, Outlet} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+import '../index.css';
 import './Login.css';
 import logo from '../assets/EurekaEatsWText.png';
 
 import useJToken from '../utils/useJToken'; // For ESLint of LogIn doc comment.
-import LandingPage from '../LandingPage/LandingPage';
 
 /**
  * @description Stateful page component for login. Checks the user session token with a to-backend call before further routing.
- * @param {useJToken} useJTokenHook
+ * @param {useJToken} param0 
  */
-function LogIn(useJTokenHook) {
+function LogIn({useJTokenHook}) {
   /* State of login component: stores user inputs. */
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const {setToken, token} = useJTokenHook();
 
-  // Try routing users with non-guest tokens towards their homepage. For now, route them to the landing page, but later this must change.
   if (token !== 'guest') {
-    // TODO: add prop argument with a private user profile page e.g
-    // EXAMPLE: return <UserProfile jTokenProp={token}/>
-    return <LandingPage/>
+    return <Navigate to="/"/>;
   }
 
   /**
@@ -62,9 +59,14 @@ function LogIn(useJTokenHook) {
       setToken(null);
     } else if (responseData.payload === 3) {
       setToken(null);
-    } else {
+      console.log(`[eurekaeats]: ${JSON.stringify(responseData)}`);
+    } else if (responseData.payload === 2) {
       // At this point, the only other allowed payload code is an object. By the required JSON format, access object.data.token!
       setToken(responseData.data.token);
+      console.log(`[eurekaeats]: set token from ${JSON.stringify(responseData)}`);
+    } else {
+      setToken(null);
+      console.log(`[eurekaeats]: set guest token from ${JSON.stringify(responseData)}`);
     }
   };
 
@@ -72,24 +74,24 @@ function LogIn(useJTokenHook) {
     <>
       <div>
         <main>
-          <h2>Ready to Eat? Log In Here</h2>
-          <div className="logo">
+          <h2>Wrong turn? Head back to our homepage!</h2>
+          <div className="logo-login-box">
             <Link to="/">
               <img src={logo} alt="My Logo" />
             </Link>
           </div>
           <p>Don't have an account? Sign up today!</p>
           <form onSubmit={handleSubmit}>
-            <div className="username-bar">
+            <div className="form-field-bar">
               <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
             </div>
-            <div className="email-bar">
+            <div className="form-field-bar">
               <input type="text" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div className="password-bar">
+            <div className="form-field-bar">
               <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
             </div>
-            <input type="submit" className="login-button" />
+            <input type="submit" className="form-login-button" />
           </form>
         </main>
       </div>
