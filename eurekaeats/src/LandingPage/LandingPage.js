@@ -1,5 +1,5 @@
 import React from 'react';
-import Outlet from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 import './LandingPage.css';
 import logo from '../assets/EurekaEatsWText.png';
 import search from '../assets/searchIcon.png';
