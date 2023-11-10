@@ -57,7 +57,9 @@ function LogIn({useJTokenHook}) {
     // If we get null data or a false boolean back, the call failed :(
     if (!responseData) {
       setToken(null);
+      console.error('[eurekaeats]: No valid JSON response!');
     } else if (responseData.payload === 3) {
+      // Here, the payload is a success boolean that is basically false.
       setToken(null);
       console.log(`[eurekaeats]: ${JSON.stringify(responseData)}`);
     } else if (responseData.payload === 2) {

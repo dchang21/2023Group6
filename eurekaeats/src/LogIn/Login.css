@@ -14,6 +14,10 @@ h2 {
   /* Reduced padding between the h2 and logo */
 }
 
+p {
+  margin: 10px 0;
+}
+
 .logo-login-box {
   position: fixed;
   right: 10px;
@@ -49,10 +53,6 @@ h2 {
   width: 200px;
   height: auto;
   margin: 0;
-}
-
-p {
-  margin: 10px 0;
 }
 
 .form-field-bar {
