@@ -19,16 +19,9 @@ Please check the _Projects_ tab for an overview of development. If a new work it
 #### 2.2.1 Running Steps: (Assumes all dependencies are present.)
  1. See https://flask.palletsprojects.com/en/3.0.x/tutorial/fact for a quick overview.
  2. $ flask --app eureka run
- 3. Go to `http://127.0.0.1:5000/index` to see the demo page.
-    ```python
-        # This code sets a path that the app knows. The path comes after the IP and port in the URL.
-        @app.route('/home')
-        def home():
-            return 'Eureka!'
-    ```
- 4. Enter `cd eurekaeats` for frontend.
- 5. Enter `npm start` to run the React development server. The page should open up automatically.
- 6. SIGINT with `CTRL+C` to stop the testrun.
+ 3. Enter `cd eurekaeats` for frontend.
+ 4. Enter `npm start` to run the React development server. The page should open up automatically.
+ 5. SIGINT with `CTRL+C` to stop the testrun.
 
 #### 2.2.2 Testing Tips:
  - Command: `python -m pytest .` runs _all_ unit tests.
