@@ -6,6 +6,15 @@
   Review Tiles
 */
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 header {
   background-color: #98DCE8;
   color: white;
@@ -164,6 +173,7 @@ p {
 
 .restaurant {
   margin-bottom: 20px;
+  box-shadow: 10px 10px 10px whitesmoke;
 }
 
 .tile-header {
@@ -175,7 +185,6 @@ p {
   width: 77.5vw;
   font-weight: 500;
   font-family: 'Avenir';
-
 }
 
 .blue-rectangle img {

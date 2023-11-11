@@ -1,4 +1,5 @@
 import React from 'react';
+import {Outlet} from 'react-router-dom';
 import './LandingPage.css';
 import logo from '../assets/EurekaEatsWText.png';
 import search from '../assets/searchIcon.png';
@@ -6,6 +7,7 @@ import italian1 from '../assets/italian1.jpeg';
 import italian2 from '../assets/italian2.jpeg';
 import { Link } from 'react-router-dom';
 
+// TODO: add SignIn link AFTER its page component is done. -DrkWithT
 function LandingPage() {
   /**
    * @description Sends a simple GET request to the Flask backend to test if this React client is connected. Takes a JSON message.
@@ -47,8 +49,8 @@ function LandingPage() {
   }
 
   return (
-    <div>
-  <header>
+    <>
+      <header>
         <div className="logo">
           <img src={logo} alt="My Logo" />
         </div>
@@ -59,12 +61,11 @@ function LandingPage() {
           </button>
         </div>
         <div className="header-buttons">
-        <Link to="/login" className="login-button">Log In</Link>
-        <Link to="/signin" className="signup-button">Sign In</Link>
-          
+          <Link to="/login" className="login-button">Log In</Link>
+          {/* <Link to="/signin" className="signup-button">Sign In</Link> */}
         </div>
-    </header>
-  
+      </header>
+
       <main>
         <h2>
           Welcome to EurekaEats! We know people just want to eat <em>good</em>.
@@ -97,10 +98,9 @@ function LandingPage() {
           </div>
         </div>
       </main>
-    </div>
+      <Outlet/>
+    </>
   );
-
-  
 }
 
 export default LandingPage;
