@@ -36,7 +36,7 @@ Please check the _Projects_ tab for an overview of development. If a new work it
    - create a .env file and store the key as `YELP_API_KEY = 'the api key'`
 2. Setup MongoDB to connect to VSCODE
    - Download VScode with MongoDb extension
-   - Add MongoDb connection
+   - Add MongoDb connection from your local host
 - Database name will be `EurekaEats`
 - Collection will be `restaurants`
   
