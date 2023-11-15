@@ -1,11 +1,11 @@
 body {
   margin: 0;
-  background-color: #dde8f1; /* somewhat fix background color*/
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 h2 {
@@ -17,6 +17,8 @@ h2 {
 p {
   margin: 10px 0;
 }
+
+
 
 .logo-login-box {
   position: fixed;
@@ -83,4 +85,11 @@ input[type="submit"].form-login-button {
 input[type="submit"].login-button:hover {
   background-color: #2a80b9;
   /* Slightly darker color on hover */
+}
+.form-login-button{
+  margin-top: 40px
+}
+.logo {
+margin-top: -140px;
+margin-bottom: -170px;
 }
