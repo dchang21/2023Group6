@@ -2,9 +2,8 @@
 import pymongo
 
 # function to drop a collection 
-def drop_collection():
-    # connection string from MongoDB. Look at read me to find connection string
-    conn_str = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000'
+def drop_collection(conn_str):
+   
 
     # test to see if connection been made for mongoDB and vscode
     try:
@@ -22,9 +21,7 @@ def drop_collection():
     my_Collection.drop()
     
 # function to store information from the parsed Yelp Fusion API JSON file to your current local MongoDB database
-def store_in_restaurant_db (id, name, image_url, is_closed, review_count, price, type, rating, longitude, latitude, street, apt, city, zip_code, country, state, phone_number):
-    # connection string from MongoDB. Look at read me to find connection string
-    conn_str = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000'
+def store_in_restaurant_db (conn_str, id, name, image_url, is_closed, review_count, price, type, rating, longitude, latitude, street, apt, city, zip_code, country, state, phone_number):
 
     # test to see if connection been made for mongoDB and vscode
     try:
