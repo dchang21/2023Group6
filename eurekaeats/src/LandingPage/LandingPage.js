@@ -62,7 +62,7 @@ function LandingPage() {
         </div>
         <div className="header-buttons">
           <Link to="/login" className="login-button">Log In</Link>
-          {/* <Link to="/signin" className="signup-button">Sign In</Link> */}
+          <Link to="/signin" className="signup-button">Sign Up</Link> 
         </div>
       </header>
 
@@ -73,30 +73,31 @@ function LandingPage() {
         <p>Only available for the Greater Los Angeles Area.</p>
         <h1><u>Featured Restaurants</u></h1>
         <div className="restaurants">
+        <div className="restaurant">
+  <div className="tile-header">Amazing Italian Place Somewhere</div>
+  <div className="blue-rectangle">
+    <div className="content-container">
+      <h4>Open until 10PM</h4>
+      <p>
+        "One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes. One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes.”
+      </p>
+    </div>
+    <img src={italian1} alt="italian1" />
+  </div>
+</div>
           <div className="restaurant">
-            <div className="tile-header">Amazing Italian Place Somewhere</div>
-            <div className="blue-rectangle">
-              <img src={italian1} alt="italian1" />
-              <h4>Open until 10PM</h4>
-              <p>
-                "One of my favorite restaurants located in Los Angeles. They have the best
-                breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes. One of my favorite restaurants located in Los Angeles. They have the best
-                breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes.”
-              </p>
-            </div>
-          </div>
-          <div className="restaurant">
-            <div className="tile-header">Your Mom's House</div>
-            <div className="blue-rectangle">
-              <img src={italian2} alt="italian2" />
-              <h4>Open until 10PM</h4>    <p>
-                "One of my favorite restaurants located in Los Angeles. They have the best
-                breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes. One of my favorite restaurants located in Los Angeles. They have the best
-                breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes.”
-              </p>
-            </div>
-          </div>
-        </div>
+  <div className="tile-header">Your Mom's House</div>
+  <div className="blue-rectangle">
+    <div className="content-container">
+      <h4>Open until 10PM</h4>
+      <p>
+        "One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes. One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes.”
+      </p>
+    </div>
+    <img src={italian2} alt="italian2" />
+  </div>
+</div>
+</div>
       </main>
       <Outlet/>
     </>

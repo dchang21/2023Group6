@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import '../index.css';
 import './Login.css';
 import logo from '../assets/EurekaEatsWText.png';
+import logo1 from '../assets/EurekaEatsLogo.png';
+
 
 import useJToken from '../utils/useJToken'; // For ESLint of LogIn doc comment.
 
@@ -15,7 +17,6 @@ import useJToken from '../utils/useJToken'; // For ESLint of LogIn doc comment.
 function LogIn({useJTokenHook}) {
   /* State of login component: stores user inputs. */
   const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const {setToken, token} = useJTokenHook();
 
@@ -25,7 +26,7 @@ function LogIn({useJTokenHook}) {
 
   /**
    * @description Helper function for making an AJAX call to the app's API in order to process the login.
-   * @param {{username: string, email: string, password: string}} credentials
+   * @param {{username: string, password: string}} credentials
    * @returns {{payload: number, data: {token: string}} | null}
    */
   const doLoginCall = async (credentials) => {
@@ -50,7 +51,6 @@ function LogIn({useJTokenHook}) {
 
     const responseData = await doLoginCall({
       username,
-      email,
       password
     });
 
@@ -75,26 +75,34 @@ function LogIn({useJTokenHook}) {
   return (
     <>
       <div>
-        <main>
-          <h2>Wrong turn? Head back to our homepage!</h2>
+      <header>
+      </header>
+      <main className="main-content-login">
+      <h2>Log Into EurekaEats</h2>
           <div className="logo-login-box">
             <Link to="/">
               <img src={logo} alt="My Logo" />
             </Link>
           </div>
+   
+          <Link to="/">
+          <img src={logo1} alt="logo" className = "logo"/>
+          </Link>
+          <Link to ="/signin">
           <p>Don't have an account? Sign up today!</p>
+          </Link>
           <form onSubmit={handleSubmit}>
             <div className="form-field-bar">
               <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
-            </div>
-            <div className="form-field-bar">
-              <input type="text" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="form-field-bar">
               <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <input type="submit" className="form-login-button" />
           </form>
+          <Link to="/">
+          <p>Wrong turn? Head back to our homepage!</p>
+          </Link>
         </main>
       </div>
       <Outlet/>
