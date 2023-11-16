@@ -37,7 +37,7 @@ Please check the _Projects_ tab for an overview of development. If a new work it
 2. Setup MongoDB to connect to VSCODE
    - Download VScode with MongoDb extension
    - Add MongoDb connection from your local host
-   - change `conn_str` for function `store_in_restaurant_db` and `drop_collection` in the `monboDB_restaurant.py` to match your own conenction string
+   - Add connection string to your `.env` file
 - Database name will be `EurekaEats`
 - Collection will be `restaurants`
   
