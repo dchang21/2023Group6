@@ -8,6 +8,7 @@ from dotenv import load_dotenv, dotenv_values
 def create_database_with_yelp_api():
     
     load_dotenv()
+    conn_str = os.getenv('CONN_STR')
     # API_KEY - Use as a key reference to gain access to the YELP FUSION API services
     # ENDPOINT - where YELP FUSION API will collect calls from users
     # HEADER - send additional information to the user
@@ -17,7 +18,7 @@ def create_database_with_yelp_api():
     HEADERS = {'Authorization': 'bearer %s' % API_KEY}
 
     # delete existing collection of the same name before adding in the new database
-    drop_collection()
+    drop_collection(conn_str)
 
     # YELP FUSION API has a limit of 50 searches per call so use keyword OFFSET to get additional non duplicate searches 
     # iterate through 
@@ -74,7 +75,7 @@ def create_database_with_yelp_api():
             else:
                 type.append(restaurant_data[i]['categories'][0]['title'])
             
-            store_in_restaurant_db(id, name, image_url, is_closed, review_count, price, type, rating, longitude, latitude, street, apt, city, zip_code, country, state, phone_number)
+            store_in_restaurant_db(conn_str, id, name, image_url, is_closed, review_count, price, type, rating, longitude, latitude, street, apt, city, zip_code, country, state, phone_number)
             type = []
 
 
