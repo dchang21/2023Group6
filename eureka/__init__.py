@@ -5,13 +5,13 @@
 
 import os
 
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask
 from pymongo import MongoClient
 
 from eureka.api.restaurants import restaurant_api_router
 from eureka.api.users import user_api_router
 
-def create_app(test_config=None):# can change nape of "app"
+def create_app(test_config=None):
     # 1a. Create application.
     app = Flask(__name__, instance_relative_config=True)
     

@@ -19,33 +19,6 @@ MOCK_USER_1 = {
         'keto': False,
         'gluten_free': False
     },
-    'protein': {
-        'beef': False,
-        'chicken': True,
-        'pork': True,
-        'tofu': False,
-        'lamb': False
-    },
-    'cuisine': {
-        'Italian': True,
-        'Chinese': False,
-        'Japanese': False,
-        'Taiwanese': True,
-        'Indian': False,
-        'Thai': False,
-        'French': True,
-        'American': True,
-        'Mexican': True
-    },
-    'reviews': [
-        {
-            'restaurant_id': 11235813,
-            'restaurant_name': 'Lambert\'s Pub',
-            'date_time': '2023-10-25 17:39:21.123456', # NOTE: This should convert from ms ticks since 1/1/0001 to a readable date string in JSON.
-            'star_rating': 4,
-            'comment': 'Oh my word! Their bangers and mash are quite juicy and well done. The shot of beer hits the spot.'
-        }
-    ]
+    'cuisine': ['Italian', 'Anglo', 'Taiwanese'],
+    'reviews': []
 }
-
-
