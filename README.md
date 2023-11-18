@@ -26,6 +26,10 @@ Please check the _Projects_ tab for an overview of development. If a new work it
 #### 2.2.2 Testing Tips:
  - Command: `python -m pytest .` runs _all_ unit tests.
     - Unit tests are _very_ incomplete for now, as they only test some dummy user API functions.
+ - App API test example:
+    ```bash
+    curl -X POST -v "http://127.0.0.1:5000/api/users/action" -H "Accept: application/json" -H "Content-Type: application/json" -H "Connection: close" --data "{\"action\": 47, \"args\": null}"
+    ```
 
 #### 2.2.3 Misc. Tips:
  - The `config.py` file has been added to the repo for easy access, but it is still unsafe to put custom secret strings in the settings. Please use a `.env` file on your computer instead for database login info.
