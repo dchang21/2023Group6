@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 h2 {
@@ -17,8 +16,6 @@ h2 {
 p {
   margin: 10px 0;
 }
-
-
 
 .logo-login-box {
   position: fixed;
@@ -43,9 +40,11 @@ p {
   0% {
     bottom: 10px;
   }
+
   50% {
     bottom: 20px;
   }
+
   100% {
     bottom: 10px;
   }
@@ -61,7 +60,8 @@ p {
   margin: 10px 0;
 }
 
-.form-field-bar > input[type="text"], .form-field-bar > input[type="password"] {
+.form-field-bar>input[type="text"],
+.form-field-bar>input[type="password"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -86,10 +86,12 @@ input[type="submit"].login-button:hover {
   background-color: #2a80b9;
   /* Slightly darker color on hover */
 }
-.form-login-button{
+
+.form-login-button {
   margin-top: 40px
 }
+
 .logo {
-margin-top: -140px;
-margin-bottom: -170px;
+  margin-top: -140px;
+  margin-bottom: -170px;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Navigate, Outlet} from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import '../index.css';
@@ -7,21 +7,21 @@ import './Login.css';
 import logo from '../assets/EurekaEatsWText.png';
 import logo1 from '../assets/EurekaEatsLogo.png';
 
-
 import useJToken from '../utils/useJToken'; // For ESLint of LogIn doc comment.
 
 /**
  * @description Stateful page component for login. Checks the user session token with a to-backend call before further routing.
- * @param {useJToken} param0 
+ * @param {{useJTokenHook: useJToken}} param0 
  */
-function LogIn({useJTokenHook}) {
+function LogIn({ useJTokenHook }) {
   /* State of login component: stores user inputs. */
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const {setToken, token} = useJTokenHook();
+  const { setToken, token } = useJTokenHook();
 
   if (token !== 'guest') {
-    return <Navigate to="/"/>;
+    /// @todo Replace 'to' argument with profile page route.
+    return <Navigate to="/" />;
   }
 
   /**
@@ -36,14 +36,14 @@ function LogIn({useJTokenHook}) {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({action: 36, args: credentials})
+      body: JSON.stringify({ action: 36, args: credentials })
     })
-    .then((response) => {
-      return response.json();
-    }).catch((error) => {
-      console.error(`eurekaeats [API Error]: ${error}`);
-      return null;
-    });
+      .then((response) => {
+        return response.json();
+      }).catch((error) => {
+        console.error(`eurekaeats [API Error]: ${error}`);
+        return null;
+      });
   };
 
   const handleSubmit = async (event) => {
@@ -75,37 +75,35 @@ function LogIn({useJTokenHook}) {
   return (
     <>
       <div>
-      <header>
-      </header>
-      <main className="main-content-login">
-      <h2>Log Into EurekaEats</h2>
+        <main className="main-content-login">
+          <h2>Log Into EurekaEats</h2>
           <div className="logo-login-box">
             <Link to="/">
               <img src={logo} alt="My Logo" />
             </Link>
           </div>
-   
+
           <Link to="/">
-          <img src={logo1} alt="logo" className = "logo"/>
+            <img src={logo1} alt="logo" className="logo" />
           </Link>
-          <Link to ="/signin">
-          <p>Don't have an account? Sign up today!</p>
+          <Link to="/signin">
+            <p>Don't have an account? Sign up today!</p>
           </Link>
           <form onSubmit={handleSubmit}>
             <div className="form-field-bar">
-              <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
+              <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className="form-field-bar">
-              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
             </div>
             <input type="submit" className="form-login-button" />
           </form>
           <Link to="/">
-          <p>Wrong turn? Head back to our homepage!</p>
+            <p>Wrong turn? Head back to our homepage!</p>
           </Link>
         </main>
       </div>
-      <Outlet/>
+      <Outlet />
     </>
   );
 }
