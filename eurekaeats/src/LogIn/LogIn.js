@@ -20,8 +20,7 @@ function LogIn({ useJTokenHook }) {
   const { setToken, token } = useJTokenHook();
 
   if (token !== 'guest') {
-    /// @todo Replace 'to' argument with profile page route.
-    return <Navigate to="/" />;
+    return <Navigate to="/profile" />;
   }
 
   /**

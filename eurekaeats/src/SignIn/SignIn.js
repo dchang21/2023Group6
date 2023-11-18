@@ -22,7 +22,7 @@ function SignIn({ usedJTokenHook }) {
   const { setToken, token } = usedJTokenHook();
 
   if (token !== 'guest') {
-    return <Navigate to="/" />;
+    return <Navigate to="/profile"/>;
   }
 
   /**
