@@ -128,6 +128,7 @@ def user_api_login_user(args: dict = None):
     if not users_reference:
         return (EE_PAYLOAD_NULL, None)
     
+    # Check if the creds match.
     auth_ok = users_reference.find_one([
         {
             '$and': [
@@ -137,6 +138,7 @@ def user_api_login_user(args: dict = None):
         }
     ]) is not None
 
+    # If the creds match, set their session UUID.
     if auth_ok:
         ssn_uuid = str(uuid4().bytes)
         is_ssn_created = users_reference.update_one(
@@ -170,6 +172,7 @@ def user_api_logout_user(args: dict = None):
     if not users_reference:
         return (EE_PAYLOAD_BOOLEAN, has_ended_ssn)
     
+    # If users can be accessed, unset the ssn field for the target user to end their session.
     has_ended_ssn = users_reference.update_one(
         {'$and': [{'username': f'{username_arg}'}, {'password', f'{password_arg}'}]},
         {'ssn': 'guest'}

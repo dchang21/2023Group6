@@ -1,6 +1,6 @@
 """
     service.py\n
-    Defines a class as a generic interface to run MongoDB commands through PyMongo. This is a database service wrapper.
+    Defines a class as a generic interface to use MongoDB through PyMongo. This is a database service wrapper.
 """
 
 from eureka.utils.constants import MONGODB_CONN_STR
@@ -8,6 +8,9 @@ from eureka.utils.constants import MONGODB_CONN_STR
 from pymongo import MongoClient
 
 class MongoService:
+    """
+        Constructs a MongoService instance that wraps a PyMongo client. The internal client supports multi-access on one according to its documentation. Returned collection objects interface with the MongoDB DB.
+    """
     def __init__(self, db_url: str = MONGODB_CONN_STR):
         try:
             self.mdb_client = MongoClient(db_url)
@@ -21,6 +24,9 @@ class MongoService:
                 self.ee_db = None
 
     def close_service(self):
+        """
+            Cleanup method for closing all database connections. Only call this on application shutdown e.g atexit handlers.
+        """
         if self.mdb_client is None:
             return
         
@@ -30,6 +36,9 @@ class MongoService:
         return self.ee_db is not None
 
     def get_collection(self, collection_name: str = ''):
+        """
+            Attempts to get a collection if the MongoService instance had its database object set up properly and if the argument not empty.
+        """
         if not collection_name or not self.ee_db:
             return None
 
