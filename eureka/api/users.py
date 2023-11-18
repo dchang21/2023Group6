@@ -18,20 +18,19 @@ def user_api_get_user(args: dict = None):
         return (EE_PAYLOAD_NULL, None)
 
     # Unpack args from JSON... Omitting token results in a lighter payload returned (SDD 5.6)
-    username_arg = args['username']
-    session_cookie_arg = args['token']
+    session_token_arg = args['token']
     users_reference = DB_SERVICE.get_collection('users')
     user_data = None
 
     # Validate args!
-    if not username_arg and not session_cookie_arg:
+    if not session_token_arg:
         return (EE_PAYLOAD_NULL, user_data)
 
-    if session_cookie_arg == 'guest':
+    if session_token_arg == 'guest':
         # Filter out general user data: only the user's name and username.
         user_data = users_reference.aggregate(
             {
-                '$match': {'username': f'{username_arg}'}
+                '$match': {'ssn': f'{session_token_arg}'}
             },
             {
                 '$project': {
@@ -46,14 +45,11 @@ def user_api_get_user(args: dict = None):
         # Get full user data only for authorized clients by cookie!
         user_data = users_reference.find_one(
             {
-                '$and': [
-                    {'username': f'{username_arg}'},
-                    {'ssn': f'{session_cookie_arg}'}
-                ]
+                'ssn': f'{session_token_arg}'
             }
         )
 
-    return (EE_PAYLOAD_NULL, user_data)
+    return (EE_PAYLOAD_OBJECT, user_data)
 
 def user_api_create_user(args: dict = None):
     if args is None:
