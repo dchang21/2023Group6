@@ -91,11 +91,16 @@ def user_api_create_user(args: dict = None):
        return (EE_PAYLOAD_NULL, None) 
 
     signin_ok = users_reference.insert_one({
-        'first_name': f'{first_name_arg}',
-        'last_name': f'{last_name_arg}',
         'username': f'{username_arg}',
         'email': f'{email_arg}',
-        'password': f'{password_arg}'
+        'password': f'{password_arg}',
+        'first_name': f'{first_name_arg}',
+        'last_name': f'{last_name_arg}',
+        'location': [],
+        'eating_preferences': {},
+        'cuisine': [],
+        'reviews': [],
+        'price': '$'  # NOTE Set the price preference to the minimum by default. Everyone will reach or exceed minimum price level.
     }).acknowledged
 
     if signin_ok:
