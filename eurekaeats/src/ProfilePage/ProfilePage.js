@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import './ProfilePage.css';
-
 import useJToken from '../utils/useJToken';
 
 import '../index.css';
@@ -18,8 +16,8 @@ import './ProfilePage.css';
 function UserBanner(userName, firstName, lastName) {
     return (
         <>
-            <h2>Welcome {userName}</h2>
-            <h3>aka {firstName} {lastName}</h3>
+            <h2 className='profile-page-h2'>Welcome {userName}</h2>
+            <h3 className='profile-page-h3'>aka {firstName} {lastName}</h3>
             <br/>
         </>
     );
@@ -133,40 +131,39 @@ function ProfilePage({usedJTokenHook}) {
 
     return (
         <>
-            <header>
-                <nav>
+            <header className='profile-page-header'>
+                <nav className='profile-page-nav'>
                     <Link to='/'>Landing</Link>
                     {/* TODO: implement a place to browser dining places? */}
                     <Link to='#'>Browse</Link>
                 </nav>
-                <button onClick={() => setToken(null)}>Logout</button>
             </header>
             <main>
                 <section className='profile-section'>
                     <UserBanner userName={userName} firstName={firstName} lastName={lastName}/>
                     {/* Logout Confirmation Form (required by app API) */}
-                    <form className='logout-form' onSubmit={(event) => handleLogoutSubmit(event)}>
-                        <div className='logout-form-section'>
-                            <label htmlFor='username-field' className='logout-form-label'>Username</label>
+                    <form className='profile-page-logout-form' onSubmit={(event) => handleLogoutSubmit(event)}>
+                        <div className='profile-page-logout-form-section'>
+                            <label htmlFor='username-field' className='profile-page-logout-form-label'>Username</label>
                         </div>
-                        <div className='logout-form-section'>
-                            <input id='username-field' className='logout-form-input' type='text' placeholder='confirm username' onChange={(event) => {setUserName(event.target.value)}}/>
+                        <div className='profile-page-logout-form-section'>
+                            <input id='username-field' className='profile-page-logout-form-input' type='text' placeholder='confirm username' onChange={(event) => {setUserName(event.target.value)}}/>
                         </div>
-                        <div className='logout-form-section'>
-                            <label htmlFor='password-field' className='logout-form-label'>Password</label>
+                        <div className='profile-page-logout-form-section'>
+                            <label htmlFor='password-field' className='profile-page-logout-form-label'>Password</label>
                         </div>
-                        <div className='logout-form-section'>
-                            <input id='password-field' className='logout-form-input' type='password' placeholder='confirm password' onChange={(event) => {setConfirmPassword(event.target.value)}}/>
+                        <div className='profile-page-logout-form-section'>
+                            <input id='password-field' className='profile-page-logout-form-input' type='password' placeholder='confirm password' onChange={(event) => {setConfirmPassword(event.target.value)}}/>
                         </div>
-                        <div className='logout-form-section'>
-                            <input className='logout-form-button' type='submit' value={'Logout'}/>
+                        <div className='profile-page-logout-form-section'>
+                            <input className='profile-page-logout-form-button' type='submit' value={'Logout'}/>
                         </div>
                     </form>
                 </section>
-                <section className='profile-section'>
-                    <h2>About Me</h2>
-                    <h3>A bit about you!</h3>
-                    <p>User descriptions are planned for the future.</p>
+                <section className='profile-page-profile-section'>
+                    <h2 className='profile-page-h2'>About Me</h2>
+                    <h3 className='profile-page-h3'>A bit about you!</h3>
+                    <p className='profile-page-p'>User descriptions are planned for the future.</p>
                 </section>
             </main>
             <Outlet/>

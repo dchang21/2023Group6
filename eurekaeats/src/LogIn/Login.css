@@ -1,23 +1,14 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h2 {
+h2.login-page-h2 {
   margin: 0;
   padding: 10px 0;
   /* Reduced padding between the h2 and logo */
 }
 
-p {
+p.login-page-p {
   margin: 10px 0;
 }
 
-.logo-login-box {
+.login-page-logo-login-box {
   position: fixed;
   right: 10px;
   bottom: 10px;
@@ -31,7 +22,7 @@ p {
   box-shadow: 10px 10px 5px whitesmoke;
 }
 
-.logo-login-box:hover {
+.login-page-logo-login-box:hover {
   background-color: #d3eba6;
   animation: 1s 1 alternate mini-bob;
 }
@@ -50,18 +41,18 @@ p {
   }
 }
 
-.logo-login-box img {
+.login-page-logo-login-box img {
   width: 200px;
   height: auto;
   margin: 0;
 }
 
-.form-field-bar {
+.login-page-form-field-bar {
   margin: 10px 0;
 }
 
-.form-field-bar>input[type="text"],
-.form-field-bar>input[type="password"] {
+.login-page-form-field-bar>input[type="text"],
+.login-page-form-field-bar>input[type="password"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -71,7 +62,7 @@ p {
   /* Set the input fields to white */
 }
 
-input[type="submit"].form-login-button {
+input[type="submit"].login-page-form-login-button {
   width: 100%;
   background-color: #135E8A;
   color: white;
@@ -82,16 +73,16 @@ input[type="submit"].form-login-button {
   transition: background-color 0.3s;
 }
 
-input[type="submit"].login-button:hover {
+input[type="submit"].login-page-login-button:hover {
   background-color: #2a80b9;
   /* Slightly darker color on hover */
 }
 
-.form-login-button {
+.login-page-form-login-button {
   margin-top: 40px
 }
 
-.logo {
+.login-page-logo {
   margin-top: -140px;
   margin-bottom: -170px;
 }

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import useJToken from '../utils/useJToken'; // For ESLint of LogIn doc comment.
 
 import '../index.css';
 import './SignIn.css';
 import logo1 from '../assets/EurekaEatsLogo.png';
-
-import useJToken from '../utils/useJToken'; // For ESLint of LogIn doc comment.
 
 /**
  * @description Stateful page component for initial sign-in. Checks the user session token with a to-backend call before further routing.
@@ -86,33 +85,33 @@ function SignIn({ usedJTokenHook }) {
   return (
     <>
       <div>
-        <main className="main-content-login">
-          <h2>Sign Up for EurekaEats</h2>
+        <main className="signin-page-main-content-login">
+          <h2 className='signin-page-h2'>Sign Up for EurekaEats</h2>
           <Link to="/">
-            <img src={logo1} alt="logo" className="logo" />
+            <img src={logo1} alt="logo" className="signin-page-logo" />
           </Link>
           <Link to="/login">
             <p>Already have an account? Log in here!</p>
           </Link>
           <form onSubmit={handleSubmit}>
-            <div className="form-field-bar">
+            <div className="signin-page-form-field-bar">
               <input type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)} />
             </div>
-            <div className="form-field-bar">
+            <div className="signin-page-form-field-bar">
               <input type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)} />
             </div>
-            <div className="form-field-bar">
+            <div className="signin-page-form-field-bar">
               <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
             </div>
-            <div className="form-field-bar">
+            <div className="signin-page-form-field-bar">
               <input type="text" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div className="form-field-bar">
+            <div className="signin-page-form-field-bar">
               <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <input type="submit" className="form-login-button" />
+            <input type="submit" className="signin-page-form-login-button" value={'Register'}/>
           </form>
-          <div className="go-back-text">
+          <div className="signin-page-go-back-text">
             <Link to="/">
               <p>Made a wrong turn? Head back to the home page</p>
             </Link>
