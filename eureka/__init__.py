@@ -4,10 +4,12 @@
 """
 
 import os
+import atexit
 
 from flask import Flask
 from pymongo import MongoClient
 
+from eureka.utils.service import DB_SERVICE
 from eureka.api.restaurants import restaurant_api_router
 from eureka.api.users import user_api_router
 
@@ -40,3 +42,10 @@ def create_app(test_config=None):
     app.register_blueprint(user_api_router)
 
     return app
+
+def ee_exit_handler():
+    DB_SERVICE.close_service()
+    print('Closed app MongoDB connection.')
+
+if __name__ != '__main__':
+    atexit.register(ee_exit_handler)
