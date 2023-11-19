@@ -28,9 +28,51 @@ function ProfilePage({usedJTokenHook}) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName]= useState('');
     const [userName, setUserName] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const {token, setToken} = usedJTokenHook();
 
     /* Event Handlers */
+
+    /**
+     * @description Makes an application API call to logout the user. Specifically, the tracked session UUID of the user will be cleared.
+     * @note See the SDD section 5.6 for logout call info.
+     * @param {{username: string, password: string}} credentials 
+     * @returns {Promise<{payload: number, data: *} | null>}
+     */
+    const doLogoutCall = async (credentials) => {
+        return fetch('http://127.0.0.1:5000/api/users/action', {
+
+        })
+        .then((response) => {
+            console.log(`eurekaeats [API Debug]: call status ${response.status}`); // Only parse JSON if request got HTTP OK for good semantics.
+            return (response.status === 200) ? response.json() : null;
+        })
+        .catch((error) => {
+            console.error(`eurekaeats [API Error]: ${error}`);
+            return null;
+        });
+    };
+
+    /**
+     * @description Event handler for logout form.
+     * @param {{username: string, password: string}} event 
+     */
+    const handleLogoutSubmit = async (event) => {
+        event.preventDefault();
+
+        const response = await doLogoutCall({
+            username: userName,
+            password: confirmPassword
+        });
+
+        if (!response) {
+            console.error(`eurekaeats [API Debug]: Call failed with success=false.`);
+        } else if (response.payload === 3) {
+            console.log(`eurekaeats [API Debug]: Call succeeded with success=true.`);
+        } else {
+            console.error(`eurekaeats [API Debug]: Call served with invalid payload code ${response.payload}`);
+        }
+    };
 
     /**
      * @description Loads some basic user info (real name) for this private profile page. See SDD 5.6 for app API call notes.
@@ -55,7 +97,7 @@ function ProfilePage({usedJTokenHook}) {
         });
     };
 
-    // Use useEffect to update user info...
+    // Use useEffect to update user info besides stateless render.
     useEffect(() => {
         const doStatefulDataLoad = async () => {
             const replyData = await loadUserInfo({token});
@@ -95,12 +137,32 @@ function ProfilePage({usedJTokenHook}) {
             <main>
                 <section className='profile-section'>
                     <UserBanner userName={userName} firstName={firstName} lastName={lastName}/>
+                    {/* Logout Confirmation Form (required by app API) */}
+                    <form className='logout-form' onSubmit={(event) => handleLogoutSubmit(event)}>
+                        <div className='logout-form-section'>
+                            <label htmlFor='username-field' className='logout-form-label'>Username</label>
+                        </div>
+                        <div className='logout-form-section'>
+                            <input id='username-field' className='logout-form-input' type='text' placeholder='confirm username' onChange={(event) => {setUserName(event.target.value)}}/>
+                        </div>
+                        <div className='logout-form-section'>
+                            <label htmlFor='password-field' className='logout-form-label'>Password</label>
+                        </div>
+                        <div className='logout-form-section'>
+                            <input id='password-field' className='logout-form-input' type='password' placeholder='confirm password' onChange={(event) => {setConfirmPassword(event.target.value)}}/>
+                        </div>
+                        <div className='logout-form-section'>
+                            <input className='logout-form-button' type='submit' value={'Logout'}/>
+                        </div>
+                    </form>
                 </section>
                 <section className='profile-section'>
-                    <h3>About Me</h3>
-                    <p>Descriptions coming soon!</p>
+                    <h2>About Me</h2>
+                    <h3>A bit about you!</h3>
+                    <p>User descriptions are planned for the future.</p>
                 </section>
             </main>
+            <Outlet/>
         </>
     )
 }
