@@ -9,12 +9,18 @@ import useJToken from '../utils/useJToken';
 import '../index.css';
 import './ProfilePage.css';
 
+/**
+ * @description Simple greeting component for a logged in user.
+ * @param {string} userName 
+ * @param {string} firstName 
+ * @param {string} lastName 
+ */
 function UserBanner(userName, firstName, lastName) {
     return (
         <>
             <h2>Welcome {userName}</h2>
             <h3>aka {firstName} {lastName}</h3>
-            <hr/>
+            <br/>
         </>
     );
 }
@@ -68,6 +74,7 @@ function ProfilePage({usedJTokenHook}) {
         if (!response) {
             console.error(`eurekaeats [API Debug]: Call failed with success=false.`);
         } else if (response.payload === 3) {
+            setToken(null);
             console.log(`eurekaeats [API Debug]: Call succeeded with success=true.`);
         } else {
             console.error(`eurekaeats [API Debug]: Call served with invalid payload code ${response.payload}`);
