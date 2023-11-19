@@ -28,7 +28,7 @@ function SignIn({ usedJTokenHook }) {
   /**
    * @description Helper function for making an AJAX call to the app's API in order to process the login.
    * @param {{firstName: string, lastName: string, username: string, email: string, firstName: string, lastName: string, password: string}} credentials
-   * @returns {{payload: number, data: {token: string} | null} | null}
+   * @returns {Promise<{payload: number, data: {token: string} | null} | null>}
    */
   const doSignInCall = async (credentials) => {
     return fetch('http://127.0.0.1:5000/api/users/action', {
