@@ -103,7 +103,8 @@ def user_api_create_user(args: dict = None):
         'eating_preferences': {},
         'cuisine': [],
         'reviews': [],
-        'price': '$'  # NOTE Set the price preference to the minimum by default. Everyone will reach or exceed minimum price level.
+        'price': '$',  # NOTE Set the price preference to the minimum by default. Everyone will reach or exceed minimum price level.
+        'ssn': 'guest'
     }).acknowledged
 
     if signin_ok:
