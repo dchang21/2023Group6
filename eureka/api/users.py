@@ -28,7 +28,7 @@ def user_api_get_user(args: dict = None):
 
     if session_token_arg == 'guest':
         # Filter out general user data: only the user's name and username.
-        user_data = users_reference.aggregate(
+        user_data = users_reference.aggregate([
             {
                 '$match': {'ssn': f'{session_token_arg}'}
             },
@@ -40,14 +40,17 @@ def user_api_get_user(args: dict = None):
                     'last_name': '$last_name'
                 }
             }
-        )
+        ], session=None).next()
     else:
         # Get full user data only for authorized clients by cookie!
-        user_data = users_reference.find_one(
+        user_data = users_reference.aggregate([
             {
-                'ssn': f'{session_token_arg}'
+                '$match': {'ssn': f'{session_token_arg}'}
+            },
+            {
+                '$project': {'_id': 0} # NOTE Omit ObjectId or else a JSON write error happens!
             }
-        )
+        ], session=None).next()
 
     return (EE_PAYLOAD_OBJECT, user_data)
 
@@ -73,8 +76,8 @@ def user_api_create_user(args: dict = None):
         {
             '$match': {
                 '$or': [
-                    {'username': f'{username_arg}'},
-                    {'email': f'{email_arg}'}
+                    {'username': {'$eq': f'{username_arg}'}},
+                    {'email': {'$eq': f'{email_arg}'}}
                 ]
             }
         },
@@ -84,7 +87,7 @@ def user_api_create_user(args: dict = None):
                 'email': '$email'
             }
         }
-    ])
+    ], session=None)
 
     # If checks are OK, create the account and send back a JSON session token.
     if pre_user_title.next() is not None:
@@ -126,31 +129,30 @@ def user_api_login_user(args: dict = None):
     
     users_reference = DB_SERVICE.get_collection('users')
 
-    if not users_reference:
+    if users_reference is None:
         return (EE_PAYLOAD_NULL, None)
     
     # Check if the creds match.
-    auth_ok = users_reference.find_one([
-        {
-            '$and': [
-                {'username': f'{username_arg}'},
-                {'password': f'{password_arg}'}
-            ]
-        }
-    ]) is not None
+    auth_ok = users_reference.find_one({
+        '$and': [
+            {'username': {'$eq': f'{username_arg}'}},
+            {'password': {'$eq': f'{password_arg}'}}
+        ]
+    }) is not None
+
+    print(f'username = {username_arg} and password = {password_arg}: auth_ok = {auth_ok}') # DEBUG
 
     # If the creds match, set their session UUID.
     if auth_ok:
         ssn_uuid = str(uuid4().bytes)
         is_ssn_created = users_reference.update_one(
             {
-                '$and': [
-                    {'username': f'{username_arg}'},
-                    {'password', f'{password_arg}'}
-                ]
+                'username': f'{username_arg}',
+                'password': f'{password_arg}'
             },
-            {'ssn': ssn_uuid}
+            {'$set': {'ssn': ssn_uuid}}
         ).acknowledged
+        print(f'is_ssn_created = {is_ssn_created}') # DEBUG
     
     if is_ssn_created:
         return (EE_PAYLOAD_OBJECT, {'token': ssn_uuid})
@@ -170,13 +172,18 @@ def user_api_logout_user(args: dict = None):
 
     users_reference = DB_SERVICE.get_collection('users')
 
-    if not users_reference:
+    if users_reference is None:
         return (EE_PAYLOAD_BOOLEAN, has_ended_ssn)
     
     # If users can be accessed, unset the ssn field for the target user to end their session.
     has_ended_ssn = users_reference.update_one(
-        {'$and': [{'username': f'{username_arg}'}, {'password', f'{password_arg}'}]},
-        {'ssn': 'guest'}
+        {
+            '$and': [
+                {'username': {'$eq': f'{username_arg}'}},
+                {'password': {'$eq': f'{password_arg}'}}
+            ]
+        },
+        {'$set': {'ssn': 'guest'}}
     ).acknowledged
 
     return (EE_PAYLOAD_BOOLEAN, has_ended_ssn)

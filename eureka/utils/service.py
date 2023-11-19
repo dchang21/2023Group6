@@ -39,7 +39,7 @@ class MongoService:
         """
             Attempts to get a collection if the MongoService instance had its database object set up properly and if the argument not empty.
         """
-        if not collection_name or not self.ee_db:
+        if not collection_name or self.ee_db is None:
             return None
 
         return self.ee_db.get_collection(collection_name)
