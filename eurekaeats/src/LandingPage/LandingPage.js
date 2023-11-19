@@ -57,7 +57,7 @@ function LandingPage() {
           <img src={logo} alt="My Logo" />
         </div>
         <div className="landing-page-search-bar">
-          <input type="text" placeholder="Begin your search for a restaurant here..." />
+          <input className='landing-page-input' type="text" placeholder="Begin your search for a restaurant here..." />
           <button className="landing-page-search-button" onClick={testDummyAPICall}>
             <img src={search} alt="searchLogo" className="landing-page-search-icon" />
           </button>
