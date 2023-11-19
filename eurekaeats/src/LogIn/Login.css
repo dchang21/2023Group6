@@ -1,3 +1,7 @@
+main.login-page-main-content-login {
+  text-align: center;
+}
+
 h2.login-page-h2 {
   margin: 0;
   padding: 10px 0;
@@ -51,9 +55,9 @@ p.login-page-p {
   margin: 10px 0;
 }
 
-.login-page-form-field-bar>input[type="text"],
-.login-page-form-field-bar>input[type="password"] {
-  width: 100%;
+.login-page-form-field-bar > input[type="text"],
+.login-page-form-field-bar > input[type="password"] {
+  width: auto;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -63,7 +67,7 @@ p.login-page-p {
 }
 
 input[type="submit"].login-page-form-login-button {
-  width: 100%;
+  width: auto;
   background-color: #135E8A;
   color: white;
   border: none;

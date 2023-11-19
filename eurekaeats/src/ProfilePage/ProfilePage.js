@@ -9,14 +9,12 @@ import './ProfilePage.css';
 
 /**
  * @description Simple greeting component for a logged in user.
- * @param {string} userName 
- * @param {string} firstName 
- * @param {string} lastName 
+ * @param {{firstName: string, lastName: string}} param0 
  */
-function UserBanner(userName, firstName, lastName) {
+function UserBanner({firstName, lastName}) {
     return (
         <>
-            <h2 className='profile-page-h2'>Welcome {userName}</h2>
+            <h2 className='profile-page-h2'>Welcome {'User'}</h2>
             <h3 className='profile-page-h3'>aka {firstName} {lastName}</h3>
             <br/>
         </>
@@ -45,7 +43,12 @@ function ProfilePage({usedJTokenHook}) {
      */
     const doLogoutCall = async (credentials) => {
         return fetch('http://127.0.0.1:5000/api/users/action', {
-
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({action: 37, args: credentials})
         })
         .then((response) => {
             console.log(`eurekaeats [API Debug]: call status ${response.status}`); // Only parse JSON if request got HTTP OK for good semantics.
@@ -125,7 +128,7 @@ function ProfilePage({usedJTokenHook}) {
     }, [token]);
 
     // Check for unauthenticated guests: redirect them to login!
-    if (token === 'guest' || !userName || !firstName || !lastName) {
+    if (token === 'guest') {
         return (<Navigate to='/login'/>);
     }
 
@@ -133,14 +136,14 @@ function ProfilePage({usedJTokenHook}) {
         <>
             <header className='profile-page-header'>
                 <nav className='profile-page-nav'>
-                    <Link to='/'>Landing</Link>
+                    <Link className='profile-page-nav-link-tile' to='/'>Landing</Link>
                     {/* TODO: implement a place to browser dining places? */}
-                    <Link to='#'>Browse</Link>
+                    <Link className='profile-page-nav-link-tile' to='#'>Browse</Link>
                 </nav>
             </header>
-            <main>
+            <main className='profile-page-main'>
                 <section className='profile-section'>
-                    <UserBanner userName={userName} firstName={firstName} lastName={lastName}/>
+                    <UserBanner firstName={firstName} lastName={lastName}/>
                     {/* Logout Confirmation Form (required by app API) */}
                     <form className='profile-page-logout-form' onSubmit={(event) => handleLogoutSubmit(event)}>
                         <div className='profile-page-logout-form-section'>

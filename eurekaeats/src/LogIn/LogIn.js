@@ -73,35 +73,29 @@ function LogIn({ useJTokenHook }) {
 
   return (
     <>
-      <div>
-        <main className="login-page-main-content-login">
-          <h2>Log Into EurekaEats</h2>
-          <div className="login-page-logo-login-box">
-            <Link to="/">
-              <img src={logo} alt="My Logo" />
-            </Link>
+      <main className="login-page-main-content-login">
+        <h2>Log Into EurekaEats</h2>
+        <div className="login-page-logo-login-box">
+          <Link to="/">
+            <img src={logo} alt="My Logo" />
+          </Link>
+        </div>
+        <Link to="/signin">
+          <p className='login-page-p'>Don't have an account? Sign up today!</p>
+        </Link>
+        <form className='login-page-form' onSubmit={handleSubmit}>
+          <div className="login-page-form-field-bar">
+            <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
           </div>
-
-          <Link to="/">
-            <img src={logo1} alt="logo" className="login-page-logo" />
-          </Link>
-          <Link to="/signin">
-            <p>Don't have an account? Sign up today!</p>
-          </Link>
-          <form onSubmit={handleSubmit}>
-            <div className="login-page-form-field-bar">
-              <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div className="login-page-form-field-bar">
-              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <input type="submit" className="login-page-form-login-button" />
-          </form>
-          <Link to="/">
-            <p>Wrong turn? Head back to our homepage!</p>
-          </Link>
-        </main>
-      </div>
+          <div className="login-page-form-field-bar">
+            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <input type="submit" className="login-page-form-login-button" />
+        </form>
+        <Link to="/">
+          <p>Wrong turn? Head back to our homepage!</p>
+        </Link>
+      </main>
       <Outlet />
     </>
   );

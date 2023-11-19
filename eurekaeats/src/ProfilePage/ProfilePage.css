@@ -112,9 +112,7 @@ p.profile-page-p {
 /* Specific Content: Controls for later profile forms */
 
 form.profile-page-logout-form {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
+    display: inline-block;
     border: 2px solid #ccc;
     border-radius: 10px;
     background-color: #e1e1e1;
