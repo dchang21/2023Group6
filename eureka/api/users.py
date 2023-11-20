@@ -20,15 +20,16 @@ def user_api_get_user(args: dict = None):
     # Unpack args from JSON... Omitting token results in a lighter payload returned (SDD 5.6)
     session_token_arg = args['token']
     users_reference = DB_SERVICE.get_collection('users')
+    user_data_batch = None
     user_data = None
 
     # Validate args!
     if not session_token_arg:
         return (EE_PAYLOAD_NULL, user_data)
 
-    if session_token_arg == 'guest':
+    if not session_token_arg or session_token_arg == 'guest':
         # Filter out general user data: only the user's name and username.
-        user_data = users_reference.aggregate([
+        user_data_batch = users_reference.aggregate([
             {
                 '$match': {'ssn': f'{session_token_arg}'}
             },
@@ -40,17 +41,21 @@ def user_api_get_user(args: dict = None):
                     'last_name': '$last_name'
                 }
             }
-        ], session=None).next()
+        ], session=None)
     else:
         # Get full user data only for authorized clients by cookie!
-        user_data = users_reference.aggregate([
+        user_data_batch = users_reference.aggregate([
             {
                 '$match': {'ssn': f'{session_token_arg}'}
             },
             {
                 '$project': {'_id': 0} # NOTE Omit ObjectId or else a JSON write error happens!
             }
-        ], session=None).next()
+        ], session=None)
+
+    for item in user_data_batch:
+        user_data = item
+        break
 
     return (EE_PAYLOAD_OBJECT, user_data)
 
@@ -90,7 +95,7 @@ def user_api_create_user(args: dict = None):
     ], session=None)
 
     # If checks are OK, create the account and send back a JSON session token.
-    if pre_user_title.next() is not None:
+    if pre_user_title.try_next() is not None:
        return (EE_PAYLOAD_NULL, None) 
 
     signin_ok = users_reference.insert_one({
