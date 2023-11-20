@@ -32,6 +32,7 @@ function ProfilePage({usedJTokenHook}) {
     const [userName, setUserName] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const {token, setToken} = usedJTokenHook();
+    const [loadOk, setLoadOk] = useState(false); // if user data for session is already loaded... stops extra AJAX calls.
 
     /* Event Handlers */
 
@@ -85,7 +86,7 @@ function ProfilePage({usedJTokenHook}) {
     /**
      * @description Loads some basic user info (real name) for this private profile page. See SDD 5.6 for app API call notes.
      * @param {{token: string}} credentials 
-     * @returns {{payload: number, data: *} | null}
+     * @returns {Promise<{payload: number, data: *} | null>}
      */
     const loadUserInfo = async (credentials) => {
         return fetch('http://127.0.0.1:5000/api/users/action', {
@@ -108,7 +109,11 @@ function ProfilePage({usedJTokenHook}) {
     // Use useEffect to update user info besides stateless render.
     useEffect(() => {
         const doStatefulDataLoad = async () => {
-            const replyData = await loadUserInfo({token});
+            if (loadOk) {
+                return;
+            }
+
+            const replyData = await loadUserInfo({token: token});
 
             if (!replyData) {
                 console.error(`eurekaeats [API Error]: Fetch failed.`);
@@ -119,13 +124,15 @@ function ProfilePage({usedJTokenHook}) {
                 setUserName(replyData.data.username);
                 setFirstName(replyData.data.first_name);
                 setLastName(replyData.data.last_name);
+                setLoadOk(true);
             } else {
+                setToken(null);
                 console.error(`eurekaeats [API Error]: Invalid payload.`);
             }
         };
         
         doStatefulDataLoad();
-    }, [token]);
+    }, [token, setToken, loadOk, setLoadOk]);
 
     // Check for unauthenticated guests: redirect them to login!
     if (token === 'guest') {
