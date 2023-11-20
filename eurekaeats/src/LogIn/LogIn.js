@@ -11,13 +11,13 @@ import './Login.css';
 
 /**
  * @description Stateful page component for login. Checks the user session token with a to-backend call before further routing.
- * @param {{useJTokenHook: useJToken}} param0 
+ * @param {{usedJTokenHook: useJToken}} param0 
  */
-function LogIn({ useJTokenHook }) {
+function LogIn({ usedJTokenHook }) {
   /* State of login component: stores user inputs. */
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const { setToken, token } = useJTokenHook();
+  const { setToken, token } = usedJTokenHook();
 
   if (token !== 'guest') {
     return <Navigate to="/profile" />;

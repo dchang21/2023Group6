@@ -13,8 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage/>}>
         </Route>
-        <Route path="/login" element={<LogIn useJTokenHook={useJToken}/>}></Route>
-        <Route path="/signin" element={<SignIn useJTokenHook={useJToken}/>}></Route>
+        <Route path="/login" element={<LogIn usedJTokenHook={useJToken}/>}></Route>
+        <Route path="/signin" element={<SignIn usedJTokenHook={useJToken}/>}></Route>
         <Route path='/profile' element={<ProfilePage usedJTokenHook={useJToken}/>}></Route>
       </Routes>
     </BrowserRouter>

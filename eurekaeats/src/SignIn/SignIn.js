@@ -21,7 +21,7 @@ function SignIn({ usedJTokenHook }) {
   const { setToken, token } = usedJTokenHook();
 
   if (token !== 'guest') {
-    return <Navigate to="/profile"/>;
+    return <Navigate to="/profile" />;
   }
 
   /**
@@ -85,36 +85,38 @@ function SignIn({ usedJTokenHook }) {
   return (
     <>
       <div>
-        <main className="signin-page-main-content-login">
-          <h2 className='signin-page-h2'>Sign Up for EurekaEats</h2>
-          <Link to="/">
-            <img src={logo1} alt="logo" className="signin-page-logo" />
-          </Link>
-          <Link to="/login">
-            <p>Already have an account? Log in here!</p>
-          </Link>
-          <form onSubmit={handleSubmit}>
-            <div className="signin-page-form-field-bar">
-              <input type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)} />
-            </div>
-            <div className="signin-page-form-field-bar">
-              <input type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)} />
-            </div>
-            <div className="signin-page-form-field-bar">
-              <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div className="signin-page-form-field-bar">
-              <input type="text" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            <div className="signin-page-form-field-bar">
-              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <input type="submit" className="signin-page-form-login-button" value={'Register'}/>
-          </form>
-          <div className="signin-page-go-back-text">
-            <Link to="/">
-              <p>Made a wrong turn? Head back to the home page</p>
+        <h2 className='signin-page-h2'>Sign Up for EurekaEats</h2>
+        <main className="signin-page-main-content">
+          <div className='signin-page-content-box'>
+            <Link to="/" className="signin-page-logo-link">
+              <img src={logo1} alt="logo" className='signin-page-ee-logo' />
             </Link>
+            <Link to="/login">
+              <p>Already have an account? Log in here!</p>
+            </Link>
+            <form onSubmit={handleSubmit}>
+              <div className="signin-page-form-field-bar">
+                <input type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)} />
+              </div>
+              <div className="signin-page-form-field-bar">
+                <input type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)} />
+              </div>
+              <div className="signin-page-form-field-bar">
+                <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
+              </div>
+              <div className="signin-page-form-field-bar">
+                <input type="text" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} />
+              </div>
+              <div className="signin-page-form-field-bar">
+                <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+              </div>
+              <input type="submit" className="signin-page-form-login-button" value={'Register'} />
+            </form>
+            <div className="signin-page-go-back-text">
+              <Link to="/">
+                <p>Made a wrong turn? Head back to the home page</p>
+              </Link>
+            </div>
           </div>
         </main>
       </div>
