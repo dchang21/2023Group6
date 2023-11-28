@@ -6,16 +6,7 @@
   Review Tiles
 */
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-header {
+header.landing-page-header {
   background-color: #98DCE8;
   color: white;
   padding: 10px;
@@ -28,24 +19,24 @@ header {
   margin-top: 100;
 }
 
-main {
+main.landing-page-main {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white; 
 }
 
-.logo img {
+.landing-page-logo img {
   width: 30vw;
   margin-left: -100px;
 }
 
-.search img {
+.landing-page-search img {
   width: 10px;
   height: 10px;
 }
 
-.search-bar {
+.landing-page-search-bar {
   display: grid;
   grid-template-columns: 4fr 1fr;
   align-items: center;
@@ -53,7 +44,7 @@ main {
 
 /* Controls */
 
-input {
+input.landing-page-input {
   display: block;
   padding: 20px;
   border: 1px solid #ccc;
@@ -62,7 +53,7 @@ input {
   font-size: 14px;
 }
 
-button {
+button.landing-page-button {
   background-color: #135E8A;
   color: white;
   border: none;
@@ -74,14 +65,14 @@ button {
   font-weight: bolder;
 }
 
-.search-icon {
+.landing-page-search-icon {
   width: 20px;
   /* Adjust the width as needed */
   height: 20px;
   /* Adjust the height as needed */
 }
 
-.search-button {
+.landing-page-search-button {
   background-color: #135E8A;
   color: white;
   border: none;
@@ -90,14 +81,14 @@ button {
   cursor: pointer;
 }
 
-.header-buttons {
+.landing-page-header-buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 20px;
 }
 
-.login-button {
+.landing-page-login-button {
   background-color: #F9BB96;
   color: white;
   border: none;
@@ -107,7 +98,7 @@ button {
   margin-left: 100px;
 }
 
-.signup-button {
+.landing-page-signup-button {
   background-color: #E76062;
   color: white;
   border: none;
@@ -118,14 +109,14 @@ button {
 
 /* Basic Text */
 
-h1 {
+h1.landing-page-h1 {
   font-size: 28px;
   text-align: center;
   font-family: 'Avenir';
   color: #E76062;
 }
 
-h2 {
+h2.landing-page-h2 {
   font-size: 24px;
   text-align: center;
   font-family: 'Avenir';
@@ -134,7 +125,7 @@ h2 {
   align-items: center;
 }
 
-p {
+p.landing-page-p {
   margin-top: 30px; /* Adjust as needed for spacing */
   font-size: 18px;
   font-family: 'Avenir';
@@ -144,7 +135,7 @@ p {
 
 /* Review Tiles */
 
-.blue-rectangle {
+.landing-page-blue-rectangle {
   background-color: #E5F7FB;
   height: 230px;
   width: 78.2vw;
@@ -155,7 +146,7 @@ p {
   position: relative;
 }
 
-.blue-rectangle1 {
+.landing-page-blue-rectangle1 {
   background-color: #E5F7FB;
   height: 230px;
   width: 78.2vw;
@@ -165,19 +156,19 @@ p {
   align-items: center;
 }
 
-.restaurants {
+.landing-page-restaurants {
   display: flex;
   flex-direction: column;
   gap: 50px;
   margin-top: 11px;
 }
 
-.restaurant {
+.landing-page-restaurant {
   margin-bottom: 20px;
   box-shadow: 10px 10px 10px whitesmoke;
 }
 
-.tile-header {
+.landing-page-tile-header {
   background-color: #135E8A;
   color: white;
   font-size: 20px;
@@ -188,14 +179,16 @@ p {
   font-family: 'Avenir';
 }
 
-.blue-rectangle img {
+.landing-page-blue-rectangle img {
   max-width: 15%;
   margin-right: 20px;
 }
-.content-container {
+
+.landing-page-content-container {
   flex: 1;
 }
-h3 {
+
+h3.landing-page-h3 {
   position: absolute;
   top: 10px;
   left: 10px;

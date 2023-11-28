@@ -7,45 +7,18 @@
 
 # Represents a fake "new user" to the site.
 MOCK_USER_1 = {
-    'id': 123456789,
+    'first_name': 'Jane',
+    'last_name': 'Doe',
     'username': 'DoeEats',
     'email': 'jdoe22@example.com',
     'password': 'DEMO123',
-    'first_name': 'Jane',
-    'last_name': 'Doe',
+    'ssn': 'guest',  # Logged out: this 'guest' token should only be checked in the frontend to redirect back to the login page.
     'location': [51.5085, -0.1257],  # London, UK
     'eating_preferences': {
         'vegan': False,
         'keto': False,
         'gluten_free': False
     },
-    'protein': {
-        'beef': False,
-        'chicken': True,
-        'pork': True,
-        'tofu': False,
-        'lamb': False
-    },
-    'cuisine': {
-        'Italian': True,
-        'Chinese': False,
-        'Japanese': False,
-        'Taiwanese': True,
-        'Indian': False,
-        'Thai': False,
-        'French': True,
-        'American': True,
-        'Mexican': True
-    },
-    'reviews': [
-        {
-            'restaurant_id': 11235813,
-            'restaurant_name': 'Lambert\'s Pub',
-            'date_time': '2023-10-25 17:39:21.123456', # NOTE: This should convert from ms ticks since 1/1/0001 to a readable date string in JSON.
-            'star_rating': 4,
-            'comment': 'Oh my word! Their bangers and mash are quite juicy and well done. The shot of beer hits the spot.'
-        }
-    ]
+    'cuisine': ['Italian', 'Anglo', 'Taiwanese'],
+    'reviews': []
 }
-
-

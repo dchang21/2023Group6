@@ -1,11 +1,13 @@
 import React from 'react';
-import {Outlet} from 'react-router-dom';
-import './LandingPage.css';
+import { Outlet } from 'react-router-dom';
 import logo from '../assets/EurekaEatsWText.png';
 import search from '../assets/searchIcon.png';
 import italian1 from '../assets/italian1.jpeg';
 import italian2 from '../assets/italian2.jpeg';
 import { Link } from 'react-router-dom';
+
+import '../index.css';
+import './LandingPage.css';
 
 // TODO: add SignIn link AFTER its page component is done. -DrkWithT
 function LandingPage() {
@@ -50,56 +52,56 @@ function LandingPage() {
 
   return (
     <>
-      <header>
-        <div className="logo">
+      <header className='landing-page-header'>
+        <div className="landing-page-logo">
           <img src={logo} alt="My Logo" />
         </div>
-        <div className="search-bar">
-          <input type="text" placeholder="Begin your search for a restaurant here..." />
-          <button className="search-button" onClick={testDummyAPICall}>
-            <img src={search} alt="searchLogo" className="search-icon" />
+        <div className="landing-page-search-bar">
+          <input className='landing-page-input' type="text" placeholder="Begin your search for a restaurant here..." />
+          <button className="landing-page-search-button" onClick={testDummyAPICall}>
+            <img src={search} alt="searchLogo" className="landing-page-search-icon" />
           </button>
         </div>
-        <div className="header-buttons">
-          <Link to="/login" className="login-button">Log In</Link>
-          <Link to="/signin" className="signup-button">Sign Up</Link> 
+        <div className="landing-page-header-buttons">
+          <Link to="/login" className="landing-page-login-button">Log In</Link>
+          <Link to="/signin" className="landing-page-signup-button">Sign Up</Link>
         </div>
       </header>
 
-      <main>
-        <h2>
+      <main className='landing-page-main'>
+        <h2 className='landing-page-h2'>
           Welcome to EurekaEats! We know people just want to eat <em>good</em>.
         </h2>
-        <p>Only available for the Greater Los Angeles Area.</p>
-        <h1><u>Featured Restaurants</u></h1>
-        <div className="restaurants">
-        <div className="restaurant">
-  <div className="tile-header">Amazing Italian Place Somewhere</div>
-  <div className="blue-rectangle">
-    <div className="content-container">
-      <h4>Open until 10PM</h4>
-      <p>
-        "One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes. One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes.”
-      </p>
-    </div>
-    <img src={italian1} alt="italian1" />
-  </div>
-</div>
-          <div className="restaurant">
-  <div className="tile-header">Your Mom's House</div>
-  <div className="blue-rectangle">
-    <div className="content-container">
-      <h4>Open until 10PM</h4>
-      <p>
-        "One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes. One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes.”
-      </p>
-    </div>
-    <img src={italian2} alt="italian2" />
-  </div>
-</div>
-</div>
+        <p className='landing-page-p'>Only available for the Greater Los Angeles Area.</p>
+        <h1 className='landing-page-h1'><u>Featured Restaurants</u></h1>
+        <div className="landing-page-restaurants">
+          <div className="landing-page-restaurant">
+            <div className="landing-page-tile-header">Amazing Italian Place Somewhere</div>
+            <div className="landing-page-blue-rectangle">
+              <div className="landing-page-content-container">
+                <h4>Open until 10PM</h4>
+                <p>
+                  "One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes. One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes.”
+                </p>
+              </div>
+              <img src={italian1} alt="italian1" />
+            </div>
+          </div>
+          <div className="landing-page-restaurant">
+            <div className="landing-page-tile-header">Your Mom's House</div>
+            <div className="landing-page-blue-rectangle">
+              <div className="landing-page-content-container">
+                <h4>Open until 10PM</h4>
+                <p>
+                  "One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes. One of my favorite restaurants located in Los Angeles. They have the best breadsticks ever! And there is no extra cost for the bread (like some other places). I think their spaghetti is one of their best dishes.”
+                </p>
+              </div>
+              <img src={italian2} alt="italian2" />
+            </div>
+          </div>
+        </div>
       </main>
-      <Outlet/>
+      <Outlet />
     </>
   );
 }
