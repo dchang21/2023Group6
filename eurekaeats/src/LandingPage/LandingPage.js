@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import {Outlet} from 'react-router-dom';
 import './LandingPage.css';
 import logo from '../assets/EurekaEatsWText.png';
@@ -48,13 +49,24 @@ function LandingPage() {
     console.log(`eurekaeats/api/dummy: ${message.payload} ${message.data}`);
   }
 
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const toggleDrawer = () => {
+    setDrawerVisible(!drawerVisible);
+  };
+
   return (
     <>
       <header>
+  
         <div className="logo">
+        <Link to="/" className="tile-header-link">
           <img src={logo} alt="My Logo" />
+          </Link>
         </div>
+        
         <div className="search-bar">
+      
           <input type="text" placeholder="Begin your search for a restaurant here..." />
           <button className="search-button" onClick={testDummyAPICall}>
             <img src={search} alt="searchLogo" className="search-icon" />
@@ -63,6 +75,7 @@ function LandingPage() {
         <div className="header-buttons">
           <Link to="/login" className="login-button">Log In</Link>
           <Link to="/signin" className="signup-button">Sign Up</Link> 
+          <Link to="/home" className="signup-button">Home Test</Link> 
         </div>
       </header>
 
@@ -74,7 +87,9 @@ function LandingPage() {
         <h1><u>Featured Restaurants</u></h1>
         <div className="restaurants">
         <div className="restaurant">
-  <div className="tile-header">Amazing Italian Place Somewhere</div>
+        <Link to="/restaurant" className="tile-header-link">
+              <div className="tile-header">Amazing Italian Place Somewhere</div>
+            </Link>
   <div className="blue-rectangle">
     <div className="content-container">
       <h4>Open until 10PM</h4>
@@ -86,7 +101,10 @@ function LandingPage() {
   </div>
 </div>
           <div className="restaurant">
-  <div className="tile-header">Your Mom's House</div>
+          <Link to="/restaurant" className="tile-header-link">
+          <div className="tile-header">Your Mom's House</div>
+          </Link>
+
   <div className="blue-rectangle">
     <div className="content-container">
       <h4>Open until 10PM</h4>

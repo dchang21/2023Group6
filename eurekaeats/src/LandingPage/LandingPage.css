@@ -202,3 +202,9 @@ h3 {
   font-family: 'Avenir';
   font-weight: 500;
 }
+
+.tile-header-link {
+  color: white;
+  /* Add any other styling you want for the link */
+  text-decoration: underline; /* If you want to keep the underline */
+}
