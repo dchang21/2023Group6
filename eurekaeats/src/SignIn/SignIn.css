@@ -1,68 +1,50 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-}
-
-h2 {
+h2.signin-page-h2 {
   margin: 0;
   padding: 10px 0;
   text-align: center;
 }
 
-p {
+p.signin-page-p {
   margin: 10px 0;
 }
 
-
-
-.logo-login-box {
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid #ccc;
-  background-color: #f3eaea;
-  box-shadow: 10px 10px 5px whitesmoke;
+.signin-page-logo-link {
+  text-align: center;
 }
 
-.logo-login-box:hover {
-  background-color: #d3eba6;
-  animation: 1s 1 alternate mini-bob;
-}
-
-@keyframes mini-bob {
-  0% {
-    bottom: 10px;
-  }
-  50% {
-    bottom: 20px;
-  }
-  100% {
-    bottom: 10px;
-  }
-}
-
-.logo-login-box img {
-  width: 200px;
+.signin-page-ee-logo {
+  width: 250px;
   height: auto;
-  margin: 0;
 }
 
-.form-field-bar {
+main.signin-page-main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.signin-page-content-box {
+  display: block;
+  width: 50vw;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fdd;
+  background-color: #f2dddd;
+  box-shadow: 10px 10px 5px whitesmoke;
+  text-align: center;
+}
+
+.signin-page-content-box:hover {
+  border: 1px solid #f44;
+}
+
+.signin-page-form-field-bar {
   margin: 10px 0;
 }
 
-.form-field-bar > input[type="text"], .form-field-bar > input[type="password"] {
-  width: 100%;
+.signin-page-form-field-bar>input[type="text"],
+.signin-page-form-field-bar>input[type="password"] {
+  width: auto;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -71,8 +53,8 @@ p {
   /* Set the input fields to white */
 }
 
-input[type="submit"].form-login-button {
-  width: 100%;
+input[type="submit"].signin-page-form-login-button {
+  width: auto;
   background-color: #135E8A;
   color: white;
   border: none;
@@ -82,29 +64,11 @@ input[type="submit"].form-login-button {
   transition: background-color 0.3s;
 }
 
-input[type="submit"].login-button:hover {
+input[type="submit"].signin-page-login-button:hover {
   background-color: #2a80b9;
   /* Slightly darker color on hover */
 }
-.form-login-button{
+
+.signin-page-form-login-button {
   margin-top: 40px
 }
-.logo {
-margin-top: -140px;
-margin-bottom: -170px;
-}
-
-header {
-  background-color: #98DCE8;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  align-items: center;
-  height: 100px;
-  display: grid;
-  grid-template-columns: auto 3fr 2fr;
-  grid-template-rows: 100px;
-  align-items: center;
-  margin-top: 100;
-}
-

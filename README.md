@@ -26,6 +26,24 @@ Please check the _Projects_ tab for an overview of development. If a new work it
 #### 2.2.2 Testing Tips:
  - Command: `python -m pytest .` runs _all_ unit tests.
     - Unit tests are _very_ incomplete for now, as they only test some dummy user API functions.
+ - App API test example:
+    ```bash
+    curl -X POST -v "http://127.0.0.1:5000/api/users/action" -H "Accept: application/json" -H "Content-Type: application/json" -H "Connection: close" --data "{\"action\": 47, \"args\": null}"
+    ```
 
 #### 2.2.3 Misc. Tips:
  - The `config.py` file has been added to the repo for easy access, but it is still unsafe to put custom secret strings in the settings. Please use a `.env` file on your computer instead for database login info.
+
+### 2.3.0 How to set up YELP FUSION API to database
+1. YELP FUSION API setup
+   - get an API KEY from https://www.yelp.com/developers/v3/manage_app
+   - create a .env file and store the key as `YELP_API_KEY = 'the api key'`
+2. Setup MongoDB to connect to VSCODE
+   - Download VScode with MongoDb extension
+   - Add MongoDb connection from your local host
+   - Add connection string to your `.env` file
+- Database name will be `EurekaEats`
+- Collection will be `restaurants`
+  
+
+
