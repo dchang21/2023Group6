@@ -196,7 +196,7 @@ def user_api_logout_user(args: dict = None):
 
 def user_api_do(appcode: int = EE_TEST_DUMMY_CALL, args = None):
     """
-        This helper function will later contain all logic to interact with the application database for CRUD operations on user data. See SRD section 3.x for more details.\n
+        This helper function will later contain all logic to interact with the application database for CRUD operations on user data. See SDD Section 5.6 for more details.\n
         Takes an int action code and a list or dict of arguments if needed.
     """
 
