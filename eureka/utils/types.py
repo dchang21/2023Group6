@@ -3,8 +3,8 @@
     List of cuisine types to suggest to a searching user.
 """
 
-# NOTE: do not change unless a new cuisine is inserted into the `restaurants` collection.
-EE_CUISINES = [
+# NOTE: do not change unless a new location type is inserted into the `restaurants` collection.
+EE_TYPES = [
     "Cocktail Bars",
     "New American",
     "Gastropubs",
