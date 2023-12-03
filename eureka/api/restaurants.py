@@ -5,6 +5,8 @@
     @author Derek Tan
 """
 
+from re import compile, IGNORECASE
+from bson import regex
 from flask import Blueprint, make_response, request
 
 from eureka.api.appcodes import *
@@ -32,7 +34,11 @@ def restaurant_api_search(args = None):
     
     # Prepare aggregation based on present keyword and/or price level
     if keyword_arg:
-        db_aggregation.append({'$regexMatch': {'input': '$name', 'regex': keyword_arg.split(' ').join('\s')}})
+        db_aggregation.append({
+            '$match': {
+                'name': {'$regex': regex.Regex.from_native(compile(keyword_arg, IGNORECASE))}
+            }
+        })
 
     if price_arg:
         db_aggregation.append({'$match': {'price': price_arg}});
@@ -151,16 +157,16 @@ def restaurant_api_do(appcode: int = EE_TEST_DUMMY_CALL, args: dict = None):
 
 restaurant_api_router = Blueprint('restaurant_api', __name__)
 
-@restaurant_api_router.route('/api/dummy', methods=['OPTIONS', 'GET', 'POST'])
-def send_dummy_message():
+@restaurant_api_router.route('/api/restaurants/action', methods=['OPTIONS', 'GET', 'POST'])
+def handle_restaurant_action():
     """
-        This is a function to return a simple JSON response to the React client to test if the frontend is properly connected. GET requests are to get JSON back from the server. POST requests are to send JSON to the server to process.
+        This is a function to return JSON results from a defined restaurant action call for EurekaEats. This dispatches the action call by its action code before forwarding the arguments to a helper.
     """
     json_request = None
     json_reply = None
     api_call_method = request.method
     
-    if not request.is_json:
+    if request.is_json:
         json_request = request.get_json()
 
     if api_call_method == 'GET' or api_call_method == 'POST':
