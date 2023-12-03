@@ -1,10 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
+
+import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+
 import logo from '../assets/EurekaEatsWText.png';
 import search from '../assets/searchIcon.png';
 import italian1 from '../assets/italian1.jpeg';
 import italian2 from '../assets/italian2.jpeg';
-import { Link } from 'react-router-dom';
 
 import '../index.css';
 import './LandingPage.css';
@@ -50,11 +53,17 @@ function LandingPage() {
     console.log(`eurekaeats/api/dummy: ${message.payload} ${message.data}`);
   }
 
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const toggleDrawer = () => {
+    setDrawerVisible(!drawerVisible);
+  };
+
   return (
     <>
       <header className='landing-page-header'>
         <div className="landing-page-logo">
-          <img src={logo} alt="My Logo" />
+            <img src={logo} alt="EurekaEats Logo" />
         </div>
         <div className="landing-page-search-bar">
           <input className='landing-page-input' type="text" placeholder="Begin your search for a restaurant here..." />
@@ -65,6 +74,7 @@ function LandingPage() {
         <div className="landing-page-header-buttons">
           <Link to="/login" className="landing-page-login-button">Log In</Link>
           <Link to="/signin" className="landing-page-signup-button">Sign Up</Link>
+          <Link to="/home" className="signup-button">Home Test</Link> 
         </div>
       </header>
 
@@ -76,7 +86,11 @@ function LandingPage() {
         <h1 className='landing-page-h1'><u>Featured Restaurants</u></h1>
         <div className="landing-page-restaurants">
           <div className="landing-page-restaurant">
-            <div className="landing-page-tile-header">Amazing Italian Place Somewhere</div>
+            <div className="landing-page-tile-header">
+              <Link to="/restaurant" className="landing-page-tile-header-link">
+                Amazing Italian Place Somewhere
+              </Link>
+            </div>
             <div className="landing-page-blue-rectangle">
               <div className="landing-page-content-container">
                 <h4>Open until 10PM</h4>
@@ -88,7 +102,11 @@ function LandingPage() {
             </div>
           </div>
           <div className="landing-page-restaurant">
-            <div className="landing-page-tile-header">Your Mom's House</div>
+            <div className="landing-page-tile-header">
+              <Link to="/restaurant" className="tile-header-link">
+                <div className="tile-header">Your Mom's House</div>
+              </Link>
+            </div>
             <div className="landing-page-blue-rectangle">
               <div className="landing-page-content-container">
                 <h4>Open until 10PM</h4>
