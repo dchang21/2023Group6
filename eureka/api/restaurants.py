@@ -23,24 +23,30 @@ def restaurant_api_search(args = None):
         return (EE_PAYLOAD_NULL, None)
     
     keyword_arg = args['keyword']
+    type_arg = args['type']
     price_arg = args['price']
     count_arg = args['count']
     db_aggregation = []
     search_results = []
 
     # Do not do a search with no criteria instead of loading all database entries... this would likely lag the client UI rendering!
-    if not keyword_arg and not price_arg and not count_arg:
+    if not keyword_arg and not type_arg and not price_arg and not count_arg:
         return (EE_PAYLOAD_NULL, None)
     
     # Prepare aggregation based on present keyword and/or price level
-    if keyword_arg:
+    if keyword_arg is not None:
         db_aggregation.append({
             '$match': {
                 'name': {'$regex': regex.Regex.from_native(compile(keyword_arg, IGNORECASE))}
             }
         })
 
-    if price_arg:
+    if type_arg is not None:
+        db_aggregation.append({
+            '$match': {'type': type_arg}
+        })
+
+    if price_arg is not None:
         db_aggregation.append({'$match': {'price': price_arg}});
 
     # Do not fetch too many restaurant entries, as getting very large queries can slow the site.
