@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import '../index.css';
+import './SearchComponent.css';
 
 /**
  * @description Contains a lookup dictionary for the possible price strings using `'$'`.
@@ -28,7 +29,7 @@ const EE_RESTAURANT_PRICE_WORDS = {
 function RestaurantCard({entryData}) {
     return (
         <>
-            <div className='result-tile'>
+            <div className='result-tile-container'>
                 <div className="result-tile-header">
                     {/* Dynamic restaurant link */}
                     <Link to={`/restaurant/${entryData.id}`} className="result-tile-header-link">
@@ -37,7 +38,7 @@ function RestaurantCard({entryData}) {
                 </div>
                 <div className="result-tile-blue-rectangle">
                     <div className="result-tile-content-container">
-                        <h4>About</h4>
+                        <h4 className='result-tile-h4'>About</h4>
                         <ul className='result-tile-stats'>
                             <li className='result-tile-stat-entry'>
                                 {`Address: ${entryData.address1} at ${entryData.city}, ${entryData.state}`}
@@ -73,10 +74,14 @@ function SearchComponent({searchResults}) {
                 {
                     // Render each card for a found result. All data is passed from `searchResults` prop!
                     searchResults.map((data) => (
-                        <RestaurantCard entryData={data}/>
+                        <li className='search-result-item'>
+                            <RestaurantCard entryData={data}/>
+                        </li>
                     ))
                 }
             </ul>
         </>
     );
 }
+
+export default SearchComponent;
