@@ -1,0 +1,70 @@
+/*
+    LandingPageDrawer.css
+    -DrkWithT
+*/
+
+.landing-page-drawer-modal {
+    position: fixed;
+    left: 0;
+    top: 25vh;
+    z-index: 2;
+    width: auto;
+    display: none;
+    background-color: #0000009f;
+}
+
+article.landing-page-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    background-color: peachpuff;
+    color: #7e7e7e;
+}
+
+article.landing-page-drawer > .landing-page-drawer-top {
+    display: block;
+    margin: 0;
+    padding: 5px 10px;
+    background-color: antiquewhite;
+    color: #E76062;
+}
+
+.landing-page-drawer-main {
+    display: block;
+}
+
+.landing-page-drawer-main > form.landing-page-drawer-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+    margin: 0;
+    padding: 5px;
+}
+
+input.landing-page-drawer-input {
+    display: block;
+    border: 2px solid #7e7e7e;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    color: #323232;
+}
+
+button.landing-page-drawer-button {
+    display: inline-block;
+    margin: 0;
+    padding: 7.5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #E76062;
+    font-size: 110%;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+button.landing-page-drawer-button:hover {
+    background-color: #f07c7e;
+    color: white;
+}
