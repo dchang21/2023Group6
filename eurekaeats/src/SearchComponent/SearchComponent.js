@@ -64,7 +64,8 @@ function RestaurantCard({entryData}) {
  * @param {{searchResults: {id: string, name: string, address1: string, city: string, state: string, is_closed: boolean, price: string, image_url: string} []}} param0 An array of fetched data per restaurant.
 */
 function SearchComponent({searchResults}) {
-    if (searchResults.length < 1) {
+    if (!searchResults) {
+        // For blank searches or before search: render placeholder as needed.
         return (<p>No results!</p>);
     }
 
