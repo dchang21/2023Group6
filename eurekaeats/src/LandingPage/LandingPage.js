@@ -12,7 +12,7 @@ import italian2 from '../assets/italian2.jpeg';
 import '../index.css';
 import './LandingPage.css';
 
-// TODO: add SignIn link AFTER its page component is done. -DrkWithT
+// TODO: add <SearchComponent/> to replace demo result tiles after fixing event handlers of searchbar.
 function LandingPage() {
   /**
    * @description Sends a simple GET request to the Flask backend to test if this React client is connected. Takes a JSON message.
