@@ -34,19 +34,19 @@ def restaurant_api_search(args: dict = None):
         return (EE_PAYLOAD_NULL, None)
     
     # Prepare aggregation based on present keyword and/or price level
-    if keyword_arg is not None:
+    if keyword_arg:
         db_aggregation.append({
             '$match': {
                 'name': {'$regex': regex.Regex.from_native(compile(keyword_arg, IGNORECASE))}
             }
         })
 
-    if type_arg is not None:
+    if type_arg:
         db_aggregation.append({
             '$match': {'type': type_arg}
         })
 
-    if price_arg is not None:
+    if price_arg:
         db_aggregation.append({'$match': {'price': price_arg}});
 
     # Do not fetch too many restaurant entries, as getting very large queries can slow the site.
