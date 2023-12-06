@@ -11,6 +11,7 @@ import search from '../assets/searchIcon.png';
 
 import '../index.css';
 import './LandingPage.css';
+import './LandingPageDrawer.css';
 
 /* Constants */
 
@@ -26,6 +27,7 @@ function LandingPage() {
   const [searchCount, setSearchCount] = useState(EE_SEARCH_COUNT_MIN);
   const [searchResults, setSearchResults] = useState([]);
   const [searchTips, setSearchTips] = useState([]);
+  const [throttleSearch, setThrottleSearch] = useState(false);
   const [drawerVisibility, setDrawerVisibility] = useState(false);
 
   /**
@@ -42,7 +44,7 @@ function LandingPage() {
     }
 
     // Do an asynchronous request to the backend to avoid stalling the page.
-    const res = await fetch('http://127.0.0.1:5000/api/dummy', {
+    const res = await fetch('http://127.0.0.1:5000/api/restaurants/action', {
       'mode': 'cors',
       'method': 'POST',
       'headers': {
@@ -67,6 +69,13 @@ function LandingPage() {
    * @description Event handler for search button clicks. Should trigger dynamic load of restaurant data based on the given search arguments.
    */
   const doSearch = async () => {
+    if (throttleSearch) {
+      return;
+    } else {
+      setThrottleSearch(true);
+      setTimeout(() => setThrottleSearch(false), 500);
+    }
+
     const apiReply = await doRestaurantAPICall(0, { 
       keyword: searchWords,
       type: searchType,
@@ -88,9 +97,13 @@ function LandingPage() {
    * @description Toggles flag to show drawer of search qualities... The flag is passed into a helper SearchDrawer component.
    * @note The drawer is actually going to be a simple left-side modal menu for simplicity.
    */
-  const toggleDrawer = () => {
-    setDrawerVisibility(!drawerVisibility);
+  const openDrawer = () => {
+    setDrawerVisibility(true);
   };
+
+  const closeDrawer = () => {
+    setDrawerVisibility(false);
+  }
 
   /**
    * @description Makes an API call on user typing of a location type keyword... some location type names are suggested.
@@ -116,55 +129,55 @@ function LandingPage() {
     doSearch();
 
     // 3. close search drawer when done!
-    toggleDrawer();
+    closeDrawer();
   };
 
   return (
     <>
       {/* Popup search drawer */}
-      <div className='landing-page-drawer-modal' style={`display: ${(drawerVisibility) ? 'block' : 'none'}`}>
+      <div className='landing-page-drawer-modal' style={{display: ((drawerVisibility) ? 'block' : 'none')}}>
         <article className='landing-page-drawer'>
           <div className='landing-page-drawer-top'>
             <h4 className='landing-page-drawer-title'>Search Form</h4>
           </div>
           <div className='landing-page-drawer-main'>
-            <form className='landing-page-drawer-form' onSubmit={handleDrawerSearch}>
+            <form className='landing-page-drawer-form' onSubmit={(event) => handleDrawerSearch(event)}>
               <div>
                 {/* Input for title keyword */}
                 <label htmlFor='landing-page-drawer-keyword'>Keyword</label>
-                <input type='text' id='landing-page-drawer-keyword' className='landing-page-drawer-input' onChange={(e) => setSearchWords(e.value)} />
+                <input type='text' id='landing-page-drawer-keyword' className='landing-page-drawer-input' onChange={(e) => setSearchWords(e.target.value)} />
               </div>
               <div>
                 {/* Input for location type */}
                 <label htmlFor='landing-page-drawer-type'>Type</label>
                 <input type='text' id='landing-page-drawer-type' className='landing-page-drawer-input' onChange={(e) => {
-                  setSearchType(e.value);
+                  setSearchType(e.target.value);
                   handleDrawerTips(searchType);
                 }} />
               </div>
               <div>
                 {/* Radio buttons to choose price tiers 1 to 3 */}
                 <label htmlFor='landing-page-drawer-price1'>Cheap</label>
-                <input type='radio' id='landing-page-drawer-price1' name='loctype' value='$' onChange={(e) => setSearchPrice(e.value)} checked={searchPrice === '$'} />
+                <input type='radio' id='landing-page-drawer-price1' name='loctype' value='$' onChange={(e) => setSearchPrice(e.target.value)} checked={searchPrice === '$'} />
                 <label htmlFor='landing-page-drawer-price2'>Mid-price</label>
-                <input type='radio' id='landing-page-drawer-price2' name='loctype' value='$$' onChange={(e) => setSearchPrice(e.value)} checked={searchPrice === '$$'} />
+                <input type='radio' id='landing-page-drawer-price2' name='loctype' value='$$' onChange={(e) => setSearchPrice(e.target.value)} checked={searchPrice === '$$'} />
                 <label htmlFor='landing-page-drawer-price3'>Mid-price</label>
-                <input type='radio' id='landing-page-drawer-price3' name='loctype' value='$$$' onChange={(e) => setSearchPrice(e.value)} checked={searchPrice === '$$$'} />
+                <input type='radio' id='landing-page-drawer-price3' name='loctype' value='$$$' onChange={(e) => setSearchPrice(e.target.value)} checked={searchPrice === '$$$'} />
               </div>
               <div>
                 {/* Input for search result limit */}
                 <label htmlFor='landing-page-drawer-srchlimit'>Limit</label>
-                <input type='text' id='landing-page-drawer-srchlimit' className='landing-page-drawer-input' onChange={(e) => setSearchCount((isNaN(e.value) || e.value > '25')
+                <input type='text' id='landing-page-drawer-srchlimit' className='landing-page-drawer-input' onChange={(e) => setSearchCount((isNaN(e.target.value) || e.target.value > '25')
                   ? EE_SEARCH_COUNT_MIN
-                  : parseInt(e.value))}
+                  : parseInt(e.target.value))}
                 placeholder='1-25' />
               </div>
               <div>
                 <button type='submit' className='landing-page-drawer-button'>Search</button>
-                <button type='button' className='landing-page-drawer-button' onClick={toggleDrawer()}>Cancel</button>
+                <button type='button' className='landing-page-drawer-button' onClick={(event) => closeDrawer()}>Cancel</button>
               </div>
             </form>
-            <p>Suggestions: {`${searchTips.join(',')}`}</p>
+            <span className='landing-page-drawer-tips'>Suggestions: {`${searchTips.join(',') || 'None'}`}</span>
           </div>
         </article>
       </div>
@@ -175,14 +188,14 @@ function LandingPage() {
         </div>
         <div className="landing-page-search-bar">
           <input className='landing-page-input' type="text" placeholder="Begin your search for a restaurant here..." />
-          <button className="landing-page-search-button" onClick={toggleDrawer}>
+          <button className="landing-page-search-button" onClick={(event) => openDrawer()}>
             <img src={search} alt="searchLogo" className="landing-page-search-icon" />
           </button>
         </div>
         <div className="landing-page-header-buttons">
           <Link to="/login" className="landing-page-login-button">Log In</Link>
           <Link to="/signin" className="landing-page-signup-button">Sign Up</Link>
-          <Link to="/home" className="signup-button">Home Test</Link>
+          <Link to="/home" className="signup-button">Home</Link>
         </div>
       </header>
       <main className='landing-page-main'>
