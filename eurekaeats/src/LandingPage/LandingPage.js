@@ -53,10 +53,10 @@ function LandingPage() {
       },
       'body': JSON.stringify({ action: actionCode, args: searchArgs })
     })
-      .catch((err) => {
-        console.error(`eurekaeats [API Error]: ${err}`);
-        return null;
-      }); // Default to null in case of a void value.
+    .catch((err) => {
+      console.error(`eurekaeats [API Error]: ${err}`);
+      return null;
+    }); // Default to null in case of a void value.
 
     if (res.status === 200) {
       return res.json();
@@ -205,7 +205,7 @@ function LandingPage() {
         <p className='landing-page-p'>Only available for the Greater Los Angeles Area.</p>
         <h1 className='landing-page-h1'><u>Featured Restaurants</u></h1>
         {/* Reuse search result list here! */}
-        <SearchComponent searchResults={searchResults} />
+        <SearchComponent searchResultList={searchResults} />
       </main>
       <Outlet />
     </>

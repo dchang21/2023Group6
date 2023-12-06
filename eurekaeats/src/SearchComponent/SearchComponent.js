@@ -38,7 +38,6 @@ function RestaurantCard({entryData}) {
                 </div>
                 <div className="result-tile-blue-rectangle">
                     <div className="result-tile-content-container">
-                        <h4 className='result-tile-h4'>About</h4>
                         <ul className='result-tile-stats'>
                             <li className='result-tile-stat-entry'>
                                 {`Address: ${entryData.address1} at ${entryData.city}, ${entryData.state}`}
@@ -52,7 +51,9 @@ function RestaurantCard({entryData}) {
                         </ul>
                     </div>
                     {/* TODO: test images later! */}
-                    {/* <img src={`${entryData.image_url}`} alt="restaurant image" /> */}
+                    <div className='result-tile-img-box'>
+                        <img src={`${entryData.image_url}`} alt="restaurant" />
+                    </div>
                 </div>
             </div>
         </>
@@ -61,10 +62,10 @@ function RestaurantCard({entryData}) {
 
 /**
  * @description Contains a modular component to render a list of search results for searched restaurants. This should be reused as a component for HomePage, LandingPage, and ProfilePage.
- * @param {{searchResults: {id: string, name: string, address1: string, city: string, state: string, is_closed: boolean, price: string, image_url: string} []}} param0 An array of fetched data per restaurant.
+ * @param {{searchResultList: {id: string, name: string, address1: string, city: string, state: string, is_closed: boolean, price: string, image_url: string} []}} param0 An array of fetched data per restaurant.
 */
-function SearchComponent({searchResults}) {
-    if (!searchResults) {
+function SearchComponent({searchResultList}) {
+    if (!searchResultList) {
         // For blank searches or before search: render placeholder as needed.
         return (<p>No results!</p>);
     }
@@ -74,7 +75,7 @@ function SearchComponent({searchResults}) {
             <ul className='search-result-list'>
                 {
                     // Render each card for a found result. All data is passed from `searchResults` prop!
-                    searchResults.map((data) => (
+                    searchResultList.map((data) => (
                         <li className='search-result-item'>
                             <RestaurantCard entryData={data}/>
                         </li>
