@@ -62,7 +62,7 @@ input.landing-page-drawer-input {
 
 button.landing-page-drawer-button {
     display: inline-block;
-    margin: 0;
+    margin-right: 5px;
     padding: 7.5px;
     border: none;
     border-radius: 5px;
