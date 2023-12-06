@@ -17,15 +17,15 @@ EE_RESTAURANT_SEARCH_LIMIT = 25
 
 #### HELPER FUNCTIONS ####
 
-def restaurant_api_search(args = None):
+def restaurant_api_search(args: dict = None):
     # Validate args as {'keyword': '...', 'price': '...', 'count': '...'}
     if not args:
         return (EE_PAYLOAD_NULL, None)
     
-    keyword_arg = args['keyword']
-    type_arg = args['type']
-    price_arg = args['price']
-    count_arg = args['count']
+    keyword_arg = args.get('keyword')
+    type_arg = args.get('type')
+    price_arg = args.get('price')
+    count_arg = args.get('count')
     db_aggregation = []
     search_results = []
 
@@ -85,7 +85,7 @@ def restaurant_api_lookup(args = None):
     if not args:
         return (EE_PAYLOAD_NULL, None)
     
-    restaurant_id_arg = args['id']
+    restaurant_id_arg = args.get('id')
     result_data = None
 
     if not restaurant_id_arg:
@@ -126,7 +126,7 @@ def restaurant_api_suggest_types(args = None):
     if not args:
         return (EE_PAYLOAD_NULL, None)
 
-    fragment_arg = args['fragment']
+    fragment_arg = args.get('fragment')
 
     if not fragment_arg:
         return (EE_PAYLOAD_NULL, None)
@@ -135,7 +135,7 @@ def restaurant_api_suggest_types(args = None):
 
     for type_word in EE_TYPES:
         # NOTE the user's word must match to the location type, and not vice versa. The user's word may be a different size than the location type...
-        if fragment_arg.find(type_word) != -1:
+        if type_word.find(fragment_arg) != -1:
             suggestions.append(type_word)
 
     return (EE_PAYLOAD_OBJECT, {'suggestions': suggestions})
@@ -176,7 +176,7 @@ def handle_restaurant_action():
         json_request = request.get_json()
 
     if api_call_method == 'GET' or api_call_method == 'POST':
-        json_reply = make_response(restaurant_api_do(json_request['action'], json_request['args']), 200)
+        json_reply = make_response(restaurant_api_do(json_request.get('action'), json_request.get('args')), 200)
         json_reply.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000') # NOTE: Permits the frontend app at this spot to request the API for development only. Should fix CORS errors?
         json_reply.headers.add('Access-Control-Allow-Methods', 'GET, POST') # NOTE: Allows GET requests from React AJAX for now.
         json_reply.headers.add('Access-Control-Allow-Headers', 'Accept, Content-Type') # NOTE: Allows these headers from React frontend to satisfy CORS checks.
