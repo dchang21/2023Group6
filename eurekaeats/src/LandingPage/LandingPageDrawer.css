@@ -4,19 +4,26 @@
 */
 
 .landing-page-drawer-modal {
-    position: fixed;
+    position: absolute;
     left: 0;
-    top: 25vh;
+    top: 0;
     z-index: 2;
-    width: auto;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
     display: none;
-    background-color: #0000009f;
+    background-color: #00000096;
 }
 
 article.landing-page-drawer {
-    display: flex;
+    position: fixed;
+    left: 5px;
+    top: 12.5vh;
+    display: inline-flex;
     flex-direction: column;
     gap: 5px;
+    width: auto;
     margin: 0;
     padding: 0;
     background-color: peachpuff;
@@ -46,6 +53,7 @@ article.landing-page-drawer > .landing-page-drawer-top {
 
 input.landing-page-drawer-input {
     display: block;
+    padding: 2px;
     border: 2px solid #7e7e7e;
     border-radius: 5px;
     background-color: whitesmoke;
@@ -67,4 +75,8 @@ button.landing-page-drawer-button {
 button.landing-page-drawer-button:hover {
     background-color: #f07c7e;
     color: white;
+}
+
+span.landing-page-drawer-tips {
+    display: contents;
 }

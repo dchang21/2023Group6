@@ -156,7 +156,7 @@ p.landing-page-p {
   align-items: center;
 }
 
-.landing-page-restaurants {
+/* .landing-page-restaurants {
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -182,7 +182,7 @@ p.landing-page-p {
 .landing-page-blue-rectangle img {
   max-width: 15%;
   margin-right: 20px;
-}
+} */
 
 .landing-page-content-container {
   flex: 1;
