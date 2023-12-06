@@ -1,5 +1,5 @@
 """
-    __init__.py
+    @file __init__.py
     Entry point for the EurekaEats application. See comment after imports for running steps.
 """
 
@@ -18,10 +18,6 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     
     # 1b. Configure application.
-    # client = MongoClient('localhost', 27017)
-    # user_db = client.flask_db
-    # userCOLL = user_db.userCOLL #User Collection
-    # NOTE: The quickstart tutorial implies that this config code to link the database is more for SQLite3 rather than MongoDB. We must replace this with PyMongo.
     # app.config.from_mapping(
     #     SECRET_KEY='dev', #Development key only.
     #     DATABASE=os.path.join(app.instance_path, 'eurekaeats.mongodb')

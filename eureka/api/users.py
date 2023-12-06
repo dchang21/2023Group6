@@ -18,7 +18,7 @@ def user_api_get_user(args: dict = None):
         return (EE_PAYLOAD_NULL, None)
 
     # Unpack args from JSON... Omitting token results in a lighter payload returned (SDD 5.6)
-    session_token_arg = args['token']
+    session_token_arg = args.get('token')
     users_reference = DB_SERVICE.get_collection('users')
     user_data_batch = None
     user_data = None
@@ -64,11 +64,11 @@ def user_api_create_user(args: dict = None):
         return (EE_PAYLOAD_NULL, None)
     
     # Unpack args from JSON
-    first_name_arg = args['firstName']
-    last_name_arg = args['lastName']
-    username_arg = args['username']
-    email_arg = args['email']
-    password_arg = args['password']
+    first_name_arg = args.get('firstName')
+    last_name_arg = args.get('lastName')
+    username_arg = args.get('username')
+    email_arg = args.get('email')
+    password_arg = args.get('password')
 
     # Use DB_SERVICE to get users collection reference
     users_reference = DB_SERVICE.get_collection('users')
@@ -124,8 +124,8 @@ def user_api_login_user(args: dict = None):
     if args is None:
         return (EE_PAYLOAD_NULL, None)
 
-    username_arg = args['username']
-    password_arg = args['password']
+    username_arg = args.get('username')
+    password_arg = args.get('password')
     auth_ok = False
     ssn_uuid = None
     is_ssn_created = False
@@ -169,8 +169,8 @@ def user_api_logout_user(args: dict = None):
     if not args:
         return (EE_PAYLOAD_BOOLEAN, False)
     
-    username_arg = args['username']
-    password_arg = args['password']
+    username_arg = args.get('username')
+    password_arg = args.get('password')
     has_ended_ssn = False
 
     if not username_arg or not password_arg:
@@ -196,7 +196,7 @@ def user_api_logout_user(args: dict = None):
 
 def user_api_do(appcode: int = EE_TEST_DUMMY_CALL, args = None):
     """
-        This helper function will later contain all logic to interact with the application database for CRUD operations on user data. See SRD section 3.x for more details.\n
+        This helper function will later contain all logic to interact with the application database for CRUD operations on user data. See SDD Section 5.6 for more details.\n
         Takes an int action code and a list or dict of arguments if needed.
     """
 
@@ -236,7 +236,7 @@ def handle_user_action():
 
     # 2. Handle request by method: handle general requests by method, especially OPTIONS!
     if api_call_method == 'GET' or api_call_method == 'POST':
-        json_reply = make_response(user_api_do(json_request['action'], json_request['args']), 200)
+        json_reply = make_response(user_api_do(json_request.get('action'), json_request.get('args')), 200)
         json_reply.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
         json_reply.headers.add('Access-Control-Allow-Methods', 'GET, POST')
         json_reply.headers.add('Access-Control-Allow-Headers', 'Accept, Content-Type')

@@ -1,6 +1,6 @@
 """
     appcodes.py\n
-    Contains constants for in-application API calls. Specifically, there are named constants for action codes and payload types based on SRD Section 3.4.\n
+    Contains constants for in-application API calls. Specifically, there are named constants for action codes and payload types based on SDD Section 5.6.\n
     TODO: Add error codes later to documents and this file.
 """
 
@@ -8,9 +8,8 @@
 
 EE_UNKNOWN = -1
 EE_SEARCH_RESTAURANT = 0
-# EE_ADD_RESTAURANT = 1
-# EE_UPDATE_RESTAURANT = 2
-# EE_DELETE_RESTAURANT = 3
+EE_LOOKUP_RESTAURANT = 1
+EE_SUGGEST_TYPES = 2
 
 EE_SEARCH_REVIEWS = 16
 EE_CREATE_REVIEW = 17
